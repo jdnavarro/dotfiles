@@ -82,6 +82,7 @@ setopt shwordsplit
 setopt interactivecomments
 setopt autopushd pushdminus pushdsilent pushdtohome
 setopt histreduceblanks histignorespace inc_append_history
+setopt nobeep
 
 # keybindings
 bindkey -e # emacs
