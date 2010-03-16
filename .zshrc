@@ -65,6 +65,11 @@ alias passgen="< /dev/urandom tr -cd \[:graph:\] | fold -w 32 | head -n 5"
 # {{{ Completion
 compctl -k "(add delete draft edit list import preview publish update)" nb
 # }}}
+
+# {{{ Virtualenv wrapper
+export WORKON_HOME=$HOME/sandbox/virtualenvs
+source /usr/bin/virtualenvwrapper_bashrc
+# }}}
 # }}}
 
 # {{{ ZSH settings
@@ -207,4 +212,3 @@ $PR_GREEN$PR_SHIFT_IN$PR_LLCORNER$PR_GREEN$PR_HBAR$PR_SHIFT_OUT(\
 setprompt
 # }}}
 # }}}
-
