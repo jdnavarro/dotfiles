@@ -88,10 +88,6 @@ setopt nobeep
 bindkey -e # emacs
 bindkey "\e[A" up-line-or-search
 bindkey "\e[B" down-line-or-search
-function backward-kill-partial-word {
-        local WORDCHARS="${WORDCHARS//[\/.]/}"
-	zle backward-kill-word "$@"
-}
 zle -N backward-kill-partial-word
 bindkey '^x/' backward-kill-partial-word
 
@@ -122,7 +118,15 @@ zstyle ":completion:*" list-colors ""
 
 # {{{ Functions
 
+function cl () { cd $1 && ls }
+function backward-kill-partial-word {
+        local WORDCHARS="${WORDCHARS//[\/.]/}"
+	zle backward-kill-word "$@"
+}
+
 # {{{ Terminal and prompt
+
+
 function precmd {
     # Terminal width = width - 1 (for lineup)
     local TERMWIDTH
