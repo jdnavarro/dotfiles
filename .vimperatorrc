@@ -8,8 +8,8 @@ javascript << EOF
     }
 EOF
 map <C-t> :js toggle_element('nav-bar')<CR>
-map <C-b> :js toggle_element('PersonalToolbar')<CR>
-#map <C-w> :js toggle_element('webdeveloper-toolbar')<CR>
+#map <C-b> :js toggle_element('PersonalToolbar')<CR>
+map <C-w> :js toggle_element('webdeveloper-toolbar')<CR>
 
 javascript << EOF
 (function(){
