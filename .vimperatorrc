@@ -4,7 +4,7 @@ set defsearch=g
 set editor=gvim -f
 set hlsearch
 
-autocmd LocationChange .* js modes.passAllKeys = /mail\.google\.com/.test(buffer.URL)
+#autocmd LocationChange .* js modes.passAllKeys = /mail\.google\.com/.test(buffer.URL)
 
 javascript << EOF
     toggle_element = function (name) {
