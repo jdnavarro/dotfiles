@@ -123,6 +123,7 @@ function backward-kill-partial-word {
         local WORDCHARS="${WORDCHARS//[\/.]/}"
 	zle backward-kill-word "$@"
 }
+function eave () { diff <(lsof -p $1) <(sleep 10; lsof -p $1) }
 
 # {{{ Terminal and prompt
 
