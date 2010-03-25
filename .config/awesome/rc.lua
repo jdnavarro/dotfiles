@@ -13,7 +13,7 @@ beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvtc"
-editor = os.getenv("EDITOR") or "vim"
+editor = os.getenv("EDITOR") or "gvim"
 browser = os.getenv("BROWSER") or "firefox"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -38,7 +38,12 @@ tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
     tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[1])
+    for tagnumber = 8, 9 do
+        awful.layout.set(layouts[2], tags[s][tagnumber])
+    end
 end
+
+
 -- }}}
 
 -- {{{ Wibox
