@@ -15,6 +15,7 @@ export READNULLCMD="${PAGER}"
 export EDITOR="vim"
 export BROWSER="firefox"
 export XTERM="urxvtc"
+export RSYNC_PROXY="localhost:8118"
 # }}}
 
 # {{{ Manual pages
