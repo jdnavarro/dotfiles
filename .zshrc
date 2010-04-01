@@ -30,8 +30,6 @@ export LESS_TERMCAP_us=$'\E[1;32m'    # begin underline
 # }}}
 
 # {{{ Aliases
-alias -g rc.lua=".config/awesome/rc.lua"
-alias -g awlib="/usr/share/awesome/lib/"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ls="ls -F --color=always"
@@ -46,6 +44,7 @@ alias mv="mv -i"
 alias rm="rm -i"
 alias cls="clear"
 alias upmem="ps aux | sort -k 6"
+alias v="gvim"
 alias top="htop"
 alias psg="ps auxw | grep -i "
 alias psptree="ps auxwwwf"
@@ -62,6 +61,8 @@ alias calc="bc -l <<<"
 alias iodrag="ionice -c3 nice -n19"
 alias spell="aspell -a <<< "
 alias passgen="< /dev/urandom tr -cd \[:graph:\] | fold -w 32 | head -n 5"
+alias -g rc.lua=".config/awesome/rc.lua"
+alias -g awlib="/usr/share/awesome/lib/"
 # }}}
 
 # {{{ Completion
