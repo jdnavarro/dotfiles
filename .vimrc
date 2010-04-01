@@ -32,6 +32,9 @@ set wildmode=longest,list
 set bg=dark
 let python_highlight_all = 1
 
+" Abbreviations
+ab pdb import pdb; pdb.set_trace()
+
 " Yankring
 nnoremap <silent> <F11> :YRShow<CR>
 let g:yankring_window_use_horiz=0
@@ -56,7 +59,8 @@ au FileType xml set omnifunc=xmlcomplete#CompleteTags
 
 " GUI specific configuration
 if has("gui_running")
-    set guioptions-=T
+    set go-=m
+    set go-=T
     set list
     set lcs=tab:»·,trail:·,extends:»,precedes:«
     set nu
