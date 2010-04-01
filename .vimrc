@@ -25,12 +25,17 @@ set ruler
 set laststatus=2 " Saves windows status after closing
 set display=lastline
 set directory=/tmp " Where to store swp files
-set backupdir=~/.vimbackup " tilde files
+set backupdir=~/.vim/backups " tilde files
 set showcmd
 set wildmenu
 set wildmode=longest,list
 set bg=dark
 let python_highlight_all = 1
+
+" Yankring
+nnoremap <silent> <F11> :YRShow<CR>
+let g:yankring_window_use_horiz=0
+let g:yankring_history_dir='~/.vim/yankring_history'
 
 " Folding
 :set fdm=marker
