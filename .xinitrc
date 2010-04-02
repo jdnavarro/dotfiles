@@ -12,6 +12,6 @@ urxvtd -q -o -f &
 # Keyboard layout systray
 #xxkb &
 
-parecellite &
+parcellite &
 
 exec awesome
