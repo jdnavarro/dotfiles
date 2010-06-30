@@ -71,7 +71,7 @@ compctl -k "(add delete draft edit list import preview publish update)" nb
 
 # {{{ Virtualenv wrapper
 export WORKON_HOME=$HOME/sandbox/virtualenvs
-source /usr/bin/virtualenvwrapper_bashrc
+source /usr/bin/virtualenvwrapper.sh
 # }}}
 # }}}
 
