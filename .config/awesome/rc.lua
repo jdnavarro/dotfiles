@@ -6,6 +6,7 @@ require("awful.rules")
 require("beautiful")
 -- Notification library
 require("naughty")
+require("eminent")
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
