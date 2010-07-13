@@ -30,6 +30,7 @@ layouts =
 {
     awful.layout.suit.tile,
     awful.layout.suit.floating,
+        awful.layout.suit.max
 }
 -- }}}
 
@@ -175,6 +176,12 @@ globalkeys = awful.util.table.join(
 
     -- Alt + Right Shift switches the current keyboard layout
     awful.key({ "Mod1"            }, "space", function () kbdcfg.switch() end),
+
+    -- Hide wibox
+     awful.key({ modkey }, "b", function ()
+         mywibox[mouse.screen].visible = not mywibox[mouse.screen].visible
+     end),
+
 
     -- Prompt
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
