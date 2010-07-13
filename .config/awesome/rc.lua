@@ -48,25 +48,7 @@ end
 -- }}}
 
 -- {{{ Wibox
--- Keyboard map indicator and changer
-kbdcfg = {}
-kbdcfg.cmd = "setxkbmap"
-kbdcfg.layout = { "us", "es" }
-kbdcfg.current = 1  -- us is our default layout
-kbdcfg.widget = widget({ type = "textbox", align = "right" })
-kbdcfg.widget.text = " " .. kbdcfg.layout[kbdcfg.current] .. " "
-kbdcfg.switch = function ()
-   kbdcfg.current = kbdcfg.current % #(kbdcfg.layout) + 1
-   local t = " " .. kbdcfg.layout[kbdcfg.current] .. " "
-   kbdcfg.widget.text = t
-   os.execute( kbdcfg.cmd .. t )
-   os.execute( "xmodmap ~/.Xmodmap" )
-end
 
--- Mouse bindings
-kbdcfg.widget:buttons(awful.util.table.join(
-    awful.button({ }, 1, function () kbdcfg.switch() end)
-))
 
 -- Create a textclock widget
 mytextclock = awful.widget.textclock({ align = "right" })
@@ -87,6 +69,21 @@ mytaglist.buttons = awful.util.table.join(
                     awful.button({ }, 4, awful.tag.viewnext),
                     awful.button({ }, 5, awful.tag.viewprev)
                     )
+
+-- Create a keyboard map indicator and changer
+kbdcfg = {}
+kbdcfg.cmd = "setxkbmap"
+kbdcfg.layout = { "us", "es" }
+kbdcfg.current = 1  -- us is our default layout
+kbdcfg.widget = widget({ type = "textbox", align = "right" })
+kbdcfg.widget.text = " " .. kbdcfg.layout[kbdcfg.current] .. " "
+kbdcfg.switch = function ()
+   kbdcfg.current = kbdcfg.current % #(kbdcfg.layout) + 1
+   local t = " " .. kbdcfg.layout[kbdcfg.current] .. " "
+   kbdcfg.widget.text = t
+   os.execute( kbdcfg.cmd .. t )
+   os.execute( "xmodmap ~/.Xmodmap" )
+end
 
 for s = 1, screen.count() do
     -- Create a promptbox for each screen
@@ -124,6 +121,10 @@ root.buttons(awful.util.table.join(
     awful.button({ }, 3, function () mymainmenu:toggle() end),
     awful.button({ }, 4, awful.tag.viewnext),
     awful.button({ }, 5, awful.tag.viewprev)
+))
+-- Keyboard layout indicator
+kbdcfg.widget:buttons(awful.util.table.join(
+    awful.button({ }, 1, function () kbdcfg.switch() end)
 ))
 -- }}}
 
