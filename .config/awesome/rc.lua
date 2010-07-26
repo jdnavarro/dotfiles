@@ -304,9 +304,9 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "gimp" },
       properties = { floating = true } },
-    { rule = { class = "gajim" },
+    { rule = { class = "Gajim.py" },
       properties = { floating = true } },
-    { rule = { class = "lastfm" },
+    { rule = { class = "Last.fm" },
       properties = { floating = true } },
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
