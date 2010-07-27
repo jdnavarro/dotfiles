@@ -300,7 +300,7 @@ awful.rules.rules = {
                      focus = true,
                      keys = clientkeys,
                      buttons = clientbuttons } },
-    { rule = { class = "MPlayer" },
+    { rule = { class = "Skype-bin" },
       properties = { floating = true } },
     { rule = { class = "gimp" },
       properties = { floating = true } },
