@@ -4,7 +4,7 @@
 xmodmap ~/.Xmodmap &
 
 # Window manager name
-wmname compiz &
+wmname LG3D &
 
 # Terminal
 urxvtd -q -o -f &
