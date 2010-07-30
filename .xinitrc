@@ -4,14 +4,9 @@
 xmodmap ~/.Xmodmap &
 
 # Window manager name
-wmname compiz &
+# wmname compiz &
 
 # Terminal
 urxvtd -q -o -f &
-
-# Keyboard layout systray
-#xxkb &
-
-parcellite &
 
 exec awesome
