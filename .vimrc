@@ -40,6 +40,9 @@ nnoremap <silent> <F11> :YRShow<CR>
 let g:yankring_window_use_horiz=0
 let g:yankring_history_dir='~/.vim/yankring_history'
 
+" xmledit
+let xml_use_xhtml = 1
+
 " Folding
 :set fdm=marker
 
@@ -47,15 +50,14 @@ let g:yankring_history_dir='~/.vim/yankring_history'
 hi Folded guibg=gray15 guifg=gray50
 au FileType python set linebreak wrap nolist
 au BufNewFile,BufRead *.pt set ft=html
-au BufNewFile,BufRead *.css set ft=cs
 au BufNewFile,BufRead *.zcml set ft=xml
 au FileType html,xml,pt,zcml set sw=2
 
 au FileType python set omnifunc=pythoncomplete#Complete
 au FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-au FileType html set omnifunc=htmlcomplete#CompleteTags
 au FileType css set omnifunc=csscomplete#CompleteCSS
 au FileType xml set omnifunc=xmlcomplete#CompleteTags
+au FileType html set omnifunc=htmlcomplete#CompleteTags
 
 " GUI specific configuration
 if has("gui_running")
