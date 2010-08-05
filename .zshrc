@@ -64,6 +64,7 @@ alias spell="aspell -a <<< "
 alias passgen="< /dev/urandom tr -cd \[:graph:\] | fold -w 32 | head -n 5"
 alias -g rc.lua=".config/awesome/rc.lua"
 alias -g awlib="/usr/share/awesome/lib/"
+alias -g vimfiles="/usr/share/vim/vimfiles/"
 # }}}
 
 # {{{ Completion
