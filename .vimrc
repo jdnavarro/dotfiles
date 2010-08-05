@@ -36,7 +36,7 @@ let python_highlight_all = 1
 ab pdb import pdb; pdb.set_trace()
 
 " Yankring
-nnoremap <silent> <F11> :YRShow<CR>
+nnoremap <silent> <F9> :YRShow<CR>
 let g:yankring_window_use_horiz=0
 let g:yankring_history_dir='~/.vim/yankring_history'
 
@@ -45,6 +45,9 @@ let xml_use_xhtml = 1
 
 " Folding
 :set fdm=marker
+
+" Taglist
+nnoremap <silent> <F8> :TlistToggle<CR>
 
 " Special handling for some file formats.
 hi Folded guibg=gray15 guifg=gray50
