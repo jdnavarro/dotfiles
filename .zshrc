@@ -124,8 +124,11 @@ zstyle ":completion:*" list-colors ""
 # {{{ Functions
 
 function cl () { cd $1 && ls }
+function covtest () {
+    nosetests --cover-package=$1 --cover-erase --with-coverage
+}
 function backward-kill-partial-word {
-        local WORDCHARS="${WORDCHARS//[\/.]/}"
+    local WORDCHARS="${WORDCHARS//[\/.]/}"
 	zle backward-kill-word "$@"
 }
 function eave () { diff <(lsof -p $1) <(sleep 10; lsof -p $1) }
