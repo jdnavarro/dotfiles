@@ -55,6 +55,7 @@ au FileType python set nowrap list textwidth=74
 au BufNewFile,BufRead *.pt set ft=html
 au BufNewFile,BufRead *.zcml set ft=xml
 au BufNewFile,BufRead *.txt set textwidth=74
+au BufNewFile,BufRead *.rst set ft=txt syntax=rest
 au FileType html,xml,pt,zcml set sw=2
 
 au FileType python set omnifunc=pythoncomplete#Complete
