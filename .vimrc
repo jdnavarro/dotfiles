@@ -48,10 +48,12 @@ nnoremap <silent> <F8> :TlistToggle<CR>
 
 " Special handling for some file formats.
 hi Folded guibg=gray15 guifg=gray50
-au FileType python set linebreak wrap nolist
+au FileType python set nowrap list textwidth=74
 au BufNewFile,BufRead *.pt set ft=html
 au BufNewFile,BufRead *.zcml set ft=xml
+au BufNewFile,BufRead *.txt set textwidth=74
 au FileType html,xml,pt,zcml set sw=2
+au FileType rst set textwidth=74
 
 au FileType python set omnifunc=pythoncomplete#Complete
 au FileType javascript set omnifunc=javascriptcomplete#CompleteJS
@@ -64,9 +66,9 @@ if has("gui_running")
     set go-=m
     set go-=T
     set list
-    set lcs=tab:»·,trail:·,extends:»,precedes:«
+    set lcs=tab:»·,trail:·,extends:»,precedes:«,eol:$
     set nu
-    set guifont=Terminus\ 8
+    set guifont=Dina\ 8
     behave mswin
 endif
 
