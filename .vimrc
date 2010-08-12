@@ -32,9 +32,6 @@ set wildmode=longest,list
 set bg=dark
 let python_highlight_all = 1
 
-" Abbreviations
-ab pdb import pdb; pdb.set_trace()
-
 " Yankring
 nnoremap <silent> <F9> :YRShow<CR>
 let g:yankring_window_use_horiz=0
@@ -55,8 +52,8 @@ au FileType python set nowrap list textwidth=74
 au BufNewFile,BufRead *.pt set ft=html
 au BufNewFile,BufRead *.zcml set ft=xml
 au BufNewFile,BufRead *.txt set textwidth=74
-au BufNewFile,BufRead *.rst set ft=txt syntax=rest
 au FileType html,xml,pt,zcml set sw=2
+au FileType rst set textwdith=74
 
 au FileType python set omnifunc=pythoncomplete#Complete
 au FileType javascript set omnifunc=javascriptcomplete#CompleteJS
