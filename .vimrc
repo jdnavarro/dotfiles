@@ -32,9 +32,6 @@ set wildmode=longest,list
 set bg=dark
 let python_highlight_all = 1
 
-" Abbreviations
-ab pdb import pdb; pdb.set_trace()
-
 " Yankring
 nnoremap <silent> <F9> :YRShow<CR>
 let g:yankring_window_use_horiz=0
