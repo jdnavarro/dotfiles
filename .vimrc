@@ -53,7 +53,7 @@ au BufNewFile,BufRead *.pt set ft=html
 au BufNewFile,BufRead *.zcml set ft=xml
 au BufNewFile,BufRead *.txt set textwidth=74
 au FileType html,xml,pt,zcml set sw=2
-au FileType rst set textwidth=74
+au FileType rst set textwidth=74 spell
 
 au FileType python set omnifunc=pythoncomplete#Complete
 au FileType javascript set omnifunc=javascriptcomplete#CompleteJS
