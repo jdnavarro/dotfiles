@@ -40,9 +40,6 @@ let g:yankring_history_dir='~/.vim/yankring_history'
 " xmledit
 let xml_use_xhtml = 1
 
-" Folding
-set fdm=marker
-
 " Taglist
 nnoremap <silent> <F8> :TlistToggle<CR>
 
