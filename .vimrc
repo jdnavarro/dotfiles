@@ -40,9 +40,6 @@ let g:yankring_history_dir='~/.vim/yankring_history'
 " xmledit
 let xml_use_xhtml = 1
 
-" Folding
-:set fdm=marker
-
 " Taglist
 nnoremap <silent> <F8> :TlistToggle<CR>
 
@@ -53,7 +50,7 @@ au BufNewFile,BufRead *.pt set ft=html
 au BufNewFile,BufRead *.zcml set ft=xml
 au BufNewFile,BufRead *.txt set textwidth=74
 au FileType html,xml,pt,zcml set sw=2
-au FileType rst set textwidth=74
+au FileType rst set textwidth=74 spell
 
 au FileType python set omnifunc=pythoncomplete#Complete
 au FileType javascript set omnifunc=javascriptcomplete#CompleteJS
