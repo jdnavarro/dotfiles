@@ -344,3 +344,18 @@ end)
 client.add_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+-- {{{ Arrange signal handler
+for s = 1, screen.count() do screen[s]:add_signal("arrange", function ()
+    local clients = awful.client.visible(s)
+    local layout = awful.layout.getname(awful.layout.get(s))
+
+    for _, c in pairs(clients) do -- Floaters are always on top
+        if   awful.client.floating.get(c) or layout == "floating"
+        then if not c.fullscreen then c.above       =  true  end
+        else                          c.above       =  false end
+    end
+  end)
+end
+-- }}}
+
