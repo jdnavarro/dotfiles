@@ -32,6 +32,10 @@ set wildmode=longest,list
 set bg=dark
 let python_highlight_all = 1
 
+" Persistent Undo
+set undofile
+set undodir=~/vim/undo
+
 " Yankring
 nnoremap <silent> <F9> :YRShow<CR>
 let g:yankring_window_use_horiz=0
