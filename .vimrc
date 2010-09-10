@@ -69,7 +69,7 @@ if has("gui_running")
     set list
     set lcs=tab:»·,trail:·,extends:»,precedes:«,eol:$
     set nu
-    set guifont=Anonymous\ Pro\ 10
+    set guifont=Anonymous\ Pro\ 9
     behave mswin
 endif
 
