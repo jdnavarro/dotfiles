@@ -3,6 +3,9 @@
 # Xmodmap
 xmodmap ~/.Xmodmap &
 
+# Cairo composition
+cairo-compmgr &
+
 # Window manager name
 wmname LG3D &
 
