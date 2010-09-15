@@ -15,4 +15,4 @@ urxvtd -q -o -f &
 # Clipboard manager
 parcellite &
 
-exec awesome
+exec dbus-launch awesome
