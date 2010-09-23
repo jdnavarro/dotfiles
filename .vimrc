@@ -34,7 +34,9 @@ let python_highlight_all = 1
 
 " Persistent Undo
 set undofile
-set undodir=~/vim/undo
+set undodir=~/.vim/undo
+set undolevels=1000
+set undoreload=10000
 
 " Yankring
 nnoremap <silent> <F9> :YRShow<CR>
