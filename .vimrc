@@ -42,6 +42,7 @@ set undoreload=10000
 nnoremap <silent> <F9> :YRShow<CR>
 let g:yankring_window_use_horiz=0
 let g:yankring_history_dir="~/.vim/yankring_history"
+let g:yankring_max_element_length=10240
 
 " xmledit
 let xml_use_xhtml = 1
