@@ -10,7 +10,7 @@ cairo-compmgr &
 wmname LG3D &
 
 # Terminal
-urxvtd -q -o -f &
+#urxvtd -q -o -f &
 
 # Clipboard manager
 parcellite &
