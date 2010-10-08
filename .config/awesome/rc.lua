@@ -13,7 +13,7 @@ require("eminent")
 beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "xterm"
+terminal = "urxvtc"
 editor = os.getenv("EDITOR") or "gvim"
 browser = os.getenv("BROWSER") or "firefox"
 editor_cmd = terminal .. " -e " .. editor

@@ -119,6 +119,11 @@ zstyle ":completion:*:cd:*" ignore-parents parent pwd
 #  * Complete with colors
 zstyle ":completion:*" list-colors ""
 
+# vcs_info
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable bzr git
+zstyle ':vcs_info:*' formats '[%b%c%u]'
+
 # }}}
 
 # {{{ Functions
@@ -151,6 +156,9 @@ function precmd {
     else
         PR_FILLBAR="\${(l.((${TERMWIDTH} - (${PROMPTSIZE} + ${PWDSIZE})))..${PR_HBAR}.)}"
     fi
+
+    # VCS
+    vcs_info
 }
 
 function preexec () {
@@ -217,7 +225,7 @@ $PR_RED%$PR_PWDLEN<...<%~%<<$PR_GREEN)$PR_SHIFT_IN$PR_HBAR$PR_GREEN$PR_URCORNER$
 $PR_GREEN$PR_SHIFT_IN$PR_LLCORNER$PR_GREEN$PR_HBAR$PR_SHIFT_OUT(\
 %(?..$PR_RED%?$PR_WHITE:)%(!.$PR_RED.$PR_YELLOW)%#$PR_GREEN)$PR_NO_COLOUR '
 
-            RPROMPT=' $PR_GREEN$PR_SHIFT_IN$PR_HBAR$PR_GREEN$PR_LRCORNER$PR_SHIFT_OUT$PR_NO_COLOUR'
+            RPROMPT='${vcs_info_msg_0_}$PR_GREEN$PR_SHIFT_IN$PR_HBAR$PR_GREEN$PR_LRCORNER$PR_SHIFT_OUT$PR_NO_COLOUR'
             ;;
     esac
 }
