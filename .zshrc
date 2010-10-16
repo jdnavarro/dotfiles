@@ -121,8 +121,11 @@ zstyle ":completion:*" list-colors ""
 
 # vcs_info
 autoload -Uz vcs_info
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' stagedstr '%F{28}●'
+zstyle ':vcs_info:*' unstagedstr '%F{11}●'
 zstyle ':vcs_info:*' enable bzr git
-zstyle ':vcs_info:*' formats '[%b%c%u]'
+zstyle ':vcs_info:[svn|bzr]' formats '[%b%c%u]'
 
 # }}}
 
@@ -158,6 +161,19 @@ function precmd {
     fi
 
     # VCS
+    if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) && -z $(bzr ls --unknown 2> /dev/null) ]]; then
+        if [[ -z $(bzr st -V 2> /dev/null) ]]; then
+            zstyle ':vcs_info:*' formats ' %F{white}[%b%c%u%F{white}]'
+        else
+            zstyle ':vcs_info:*' formats ' %F{white}[%b%c%u%F{28}●%F{white}]'
+        fi
+    else
+        if [[ -z $(bzr st -V 2> /dev/null) ]]; then
+            zstyle ':vcs_info:*' formats ' %F{white}[%b%c%u%F{red}●%F{white}]'
+        else
+            zstyle ':vcs_info:*' formats ' %F{white}[%b%c%u%F{red}●%F{28}●%F{white}]'
+        fi
+    fi
     vcs_info
 }
 
