@@ -15,4 +15,8 @@ urxvtd -q -o -f &
 # Clipboard manager
 parcellite &
 
-exec dbus-launch awesome
+# Load nvidia settings
+nvidia-settings -l
+
+# exec dbus-launch awesome
+exec awesome
