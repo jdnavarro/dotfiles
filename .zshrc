@@ -63,6 +63,7 @@ alias iodrag="ionice -c3 nice -n19"
 alias spell="aspell -a <<< "
 alias passgen="< /dev/urandom tr -cd \[:graph:\] | fold -w 32 | head -n 5"
 alias pjson='python -mjson.tool'
+alias yi='~/.cabal/bin/yi'
 alias -g rc.lua="/home/danny/.config/awesome/rc.lua"
 alias -g awlib="/usr/share/awesome/lib/"
 alias -g vimfiles="/usr/share/vim/vimfiles/"
@@ -122,11 +123,11 @@ zstyle ":completion:*" list-colors ""
 
 # vcs_info
 autoload -Uz vcs_info
-zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' stagedstr '%F{28}●'
 zstyle ':vcs_info:*' unstagedstr '%F{11}●'
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:[svn]' formats '[%b%c%u]'
 zstyle ':vcs_info:*' enable bzr git
-zstyle ':vcs_info:[svn|bzr]' formats '[%b%c%u]'
 
 # }}}
 
