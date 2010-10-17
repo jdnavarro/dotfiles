@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Xmodmap
+xmodmap ~/.Xmodmap &
+
+# Window manager name
+wmname compiz &
+
+# Terminal
+urxvtd -q -o -f &
+
+exec awesome -c /home/danny/.config/awesome/rc-test.lua
