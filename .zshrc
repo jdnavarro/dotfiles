@@ -1,6 +1,7 @@
 # -*- shell-script -*-
 # 
 # anrxc's init file for Z-SHELL 4.3.10 on Arch GNU/Linux.
+# http://sysphere.org/~anrxc/ 
 # modified by Danny Navarro
 
 # {{{ User settings
