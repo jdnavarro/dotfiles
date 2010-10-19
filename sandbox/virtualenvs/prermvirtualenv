@@ -1,0 +1,5 @@
+#!/bin/sh
+# This hook is run before a virtualenv is deleted.
+
+# Make backup of virtualenv
+cp -a $1 ~/.trash/$1-$(date +%s)
