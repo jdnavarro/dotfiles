@@ -317,6 +317,9 @@ awful.rules.rules = {
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
 client.add_signal("manage", function (c, startup)
+
+    -- Don't let client hint position (empty spaces)
+    c.size_hints_honor = false
     -- Add a titlebar
     awful.titlebar.add(c, { modkey = modkey })
 
