@@ -5,7 +5,7 @@ set hlsearch
 
 " autocmd LocationChange .* js modes.passAllKeys = /mail\.google\.com/.test(buffer.URL)
 
-javascript << EOF
+javascript <<EOF
     toggle_element = function (name) {
         document.getElementById(name).collapsed ^= 1;
     }
@@ -14,7 +14,7 @@ map <C-t> :js toggle_element('nav-bar')<CR>
 map <C-b> :js toggle_element('PersonalToolbar')<CR>
 map <C-w> :js toggle_element('webdeveloper-toolbar')<CR>
 
-javascript << EOF
+javascript <<EOF
 (function(){
     var feedPanel = document.createElement("statusbarpanel");
     feedPanel.setAttribute("id", "feed-panel-clone");
@@ -25,7 +25,7 @@ javascript << EOF
 })();
 EOF
 
-javascript << EOF
+javascript <<EOF
 (function(){
     var zoteroPanel = document.createElement("statusbarpanel");
     zoteroPanel.setAttribute("id", "zotero-panel-clone");
