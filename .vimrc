@@ -30,6 +30,7 @@ set showcmd
 set wildmenu
 set wildmode=longest,list
 set bg=dark
+set autochdir
 let python_highlight_all = 1
 
 " Persistent Undo
