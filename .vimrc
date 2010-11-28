@@ -30,6 +30,7 @@ set showcmd
 set wildmenu
 set wildmode=longest,list
 set bg=dark
+set autochdir
 let python_highlight_all = 1
 
 " Persistent Undo
@@ -45,7 +46,7 @@ let g:yankring_history_dir="~/.vim/yankring_history"
 let g:yankring_max_element_length=10240
 
 " xmledit
-let xml_use_xhtml = 1
+"let xml_use_xhtml = 1
 
 " Taglist
 nnoremap <silent> <F8> :TlistToggle<CR>
