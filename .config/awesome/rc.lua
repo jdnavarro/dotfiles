@@ -7,6 +7,7 @@ require("beautiful")
 -- Notification library
 require("naughty")
 require("eminent")
+require("vicious")
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
@@ -129,6 +130,12 @@ for s = 1, screen.count() do
                                               return awful.widget.tasklist.label.currenttags(c, s)
                                           end, mytasklist.buttons)
 
+    -- Create network usage widget
+    netwidget = widget({ type = "textbox" })
+    vicious.register(netwidget,
+                     vicious.widgets.net,
+                     '<span color="#CC9393">${wlan0 down_kb}</span> <span color="#7F9F7F">${eth0 up_kb}</span>',
+                     3)
     -- Create the wibox
     mywibox[s] = awful.wibox({ position = "top", screen = s })
     -- Add widgets to the wibox - order matters
@@ -142,10 +149,12 @@ for s = 1, screen.count() do
         mytextclock,
         kbdcfg.widget,
         s == 1 and mysystray or nil,
+        netwidget,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
     }
 end
+
 -- }}}
 
 -- {{{ Mouse bindings
