@@ -9,4 +9,4 @@ wmname compiz &
 # Terminal
 urxvtd -q -o -f &
 
-exec awesome -c /home/danny/.config/awesome/rc-test.lua
+exec /usr/bin/awesome -c /home/danny/.config/awesome/rc-test.lua
