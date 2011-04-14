@@ -18,5 +18,8 @@ parcellite &
 # Load nvidia settings
 nvidia-settings -l
 
+# WICD tray
+wicd-gtk &
+
 # exec dbus-launch awesome
-exec awesome
+exec /usr/bin/awesome
