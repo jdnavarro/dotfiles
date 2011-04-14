@@ -136,6 +136,19 @@ for s = 1, screen.count() do
                      vicious.widgets.net,
                      '<span color="#CC9393">${wlan0 down_kb}</span> <span color="#7F9F7F">${eth0 up_kb}</span>',
                      3)
+    -- Create memory widget
+    memwidget = widget ({ type = "textbox" })
+    vicious.register(memwidget,
+                     vicious.widgets.mem,
+                     "$1% ($2MB/$/$3MB)",
+                     13)
+    -- Create CPU widget
+    cpuwidget = widget({ type = "textbox" })
+    vicious.register(cpuwidget, vicious.widgets.cpu, "$1%")
+
+    -- Create separator
+    separator = widget({ type = "textbox" })
+    separator.text = " :: "
     -- Create the wibox
     mywibox[s] = awful.wibox({ position = "top", screen = s })
     -- Add widgets to the wibox - order matters
@@ -146,10 +159,19 @@ for s = 1, screen.count() do
             layout = awful.widget.layout.horizontal.leftright
         },
         mylayoutbox[s],
+        separator,
         mytextclock,
+        separator,
         kbdcfg.widget,
+        separator,
         s == 1 and mysystray or nil,
+        separator,
         netwidget,
+        separator,
+        memwidget,
+        separator,
+        cpuwidget,
+        separator,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
     }
