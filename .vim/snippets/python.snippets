@@ -2,3 +2,5 @@ snippet ipdb
 	import ipdb; ipdb.set_trace()
 snippet pdb
 	import pdb; pdb.set_trace()
+snippet mem
+	import ipdb; from guppy import hpy; hpy = hpy(); import objgraph; ipdb.set_trace()
