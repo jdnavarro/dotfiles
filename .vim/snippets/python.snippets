@@ -4,3 +4,5 @@ snippet pdb
 	import pdb; pdb.set_trace()
 snippet mem
 	import ipdb; from guppy import hpy; hpy = hpy(); import objgraph; ipdb.set_trace()
+snippet log
+	log = __import__('logging').getLogger(__name__)
