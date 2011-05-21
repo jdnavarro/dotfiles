@@ -3,24 +3,7 @@ set wildmode=list:full
 set defsearch=g
 set hlsearch
 
-" autocmd LocationChange .* js modes.passAllKeys = /mail\.google\.com/.test(buffer.URL)
+" M-Up/Dn toggles the toolbar and bookmarks bar
 
-javascript <<EOF
-    toggle_element = function (name) {
-        document.getElementById(name).collapsed ^= 1;
-    }
-EOF
-map <C-t> :js toggle_element('nav-bar')<CR>
-map <C-b> :js toggle_element('PersonalToolbar')<CR>
-map <C-w> :js toggle_element('webdeveloper-toolbar')<CR>
-
-javascript <<EOF
-(function(){
-    var zoteroPanel = document.createElement("statusbarpanel");
-    zoteroPanel.setAttribute("id", "zotero-panel-clone");
-    zoteroPanel.appendChild(document.getElementById("zotero-status-image"));
-    zoteroPanel.firstChild.setAttribute("style", "padding: 0; max-height: 16px;");
-    document.getElementById("status-bar")
-            .insertBefore(zoteroPanel, document.getElementById("security-button"));
-})();
-EOF
+map <A-Down> :set toolbars=navigation,bookmarks<CR>
+map <A-Up> :set toolbars=nonavigation,nobookmarks<CR>
