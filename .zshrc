@@ -75,9 +75,10 @@ alias -g vimfiles="/usr/share/vim/vimfiles/"
 compctl -k "(add delete draft edit list import preview publish update)" nb
 # }}}
 
-# {{{ Virtualenv wrapper
+# {{{ Virtualenv
 export WORKON_HOME=$HOME/sandbox/virtualenvs
 source /usr/bin/virtualenvwrapper.sh
+export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
 # }}}
 # }}}
 
