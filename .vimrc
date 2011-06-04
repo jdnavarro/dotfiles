@@ -51,6 +51,9 @@ let g:yankring_max_element_length=10240
 " Taglist
 nnoremap <silent> <F8> :TlistToggle<CR>
 
+" Save as root
+cmap w!! w !sudo tee % >/dev/null
+
 " Special handling for some file formats.
 hi Folded guibg=gray15 guifg=gray50
 au FileType python set nowrap list textwidth=74
