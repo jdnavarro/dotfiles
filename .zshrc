@@ -80,6 +80,10 @@ export WORKON_HOME=$HOME/sandbox/virtualenvs
 source /usr/bin/virtualenvwrapper.sh
 export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
 # }}}
+
+# {{{ Syntax highlighting
+source $HOME/sandbox/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 # }}}
 
 # {{{ ZSH settings
