@@ -134,7 +134,7 @@ for s = 1, screen.count() do
     netwidget = widget({ type = "textbox" })
     vicious.register(netwidget,
                      vicious.widgets.net,
-                     '<span color="#7F9F7F">${wlan0 down_kb}</span> <span color="#CC9393">${wlan0 up_kb}</span>',
+                     '<span color="#7F9F7F">${eth0 down_kb}</span> <span color="#CC9393">${eth0 up_kb}</span>',
                      3)
     -- Create memory widget
     memwidget = widget ({ type = "textbox" })
