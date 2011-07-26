@@ -1,0 +1,13 @@
+[ui]
+editor = vim
+username = Danny Navarro <dnavarro@yaco.es>
+
+[extensions]
+hgext.mq =
+fetch =
+rebase =
+color =
+hgk =
+pager =
+inotify =
+zeroconf =
