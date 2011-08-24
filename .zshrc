@@ -80,6 +80,11 @@ export WORKON_HOME=$HOME/sandbox/virtualenvs
 source /usr/bin/virtualenvwrapper.sh
 export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
 # }}}
+
+# {{{ RVM
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+#}}}
+
 # }}}
 
 # {{{ ZSH settings
