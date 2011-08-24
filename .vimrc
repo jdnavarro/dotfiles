@@ -32,18 +32,13 @@ set wildmode=longest,list
 set bg=dark
 set autochdir
 let python_highlight_all = 1
+set tags=/tmp/tags
 
 " Persistent Undo
 set undofile
 set undodir=~/.vim/undo
 set undolevels=1000
 set undoreload=10000
-
-" Yankring
-nnoremap <silent> <F9> :YRShow<CR>
-let g:yankring_window_use_horiz=0
-let g:yankring_history_dir="~/.vim/yankring_history"
-let g:yankring_max_element_length=10240
 
 " xmledit
 "let xml_use_xhtml = 1
@@ -54,9 +49,12 @@ nnoremap <silent> <F8> :TlistToggle<CR>
 " Save as root
 cmap w!! w !sudo tee % >/dev/null
 
+" Update ctags
+nmap <F2> :!ctags<CR><CR>
+
 " Special handling for some file formats.
 hi Folded guibg=gray15 guifg=gray50
-au FileType python set nowrap list textwidth=74
+au FileType python set nowrap list textwidth=74 sw=4
 au BufNewFile,BufRead *.pt set ft=html
 au BufNewFile,BufRead *.zcml set ft=xml
 au BufNewFile,BufRead *.txt set textwidth=74
