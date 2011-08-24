@@ -11,3 +11,11 @@ hgk =
 pager =
 inotify =
 zeroconf =
+
+[hooks]
+pretxncommit.pyflakes = python:hghooks.code.pyflakeshook
+pretxncommit.pep8 = python:hghooks.code.pep8hook
+pretxncommit.pdb = python:hghooks.code.pdbhook
+
+[pep8]
+ignore = E501
