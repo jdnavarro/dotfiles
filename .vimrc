@@ -31,8 +31,8 @@ set wildmenu
 set wildmode=longest,list
 set bg=dark
 set autochdir
-let python_highlight_all = 1
 set tags=/tmp/tags
+let python_highlight_all = 1
 
 " Persistent Undo
 set undofile
@@ -50,7 +50,7 @@ nnoremap <silent> <F8> :TlistToggle<CR>
 cmap w!! w !sudo tee % >/dev/null
 
 " Update ctags
-nmap <F2> :!ctags<CR><CR>
+nmap <F2> :!ctags -R -f /tmp/tags `pwd`<CR>
 
 " Special handling for some file formats.
 hi Folded guibg=gray15 guifg=gray50

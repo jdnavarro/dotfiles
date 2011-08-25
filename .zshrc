@@ -16,7 +16,6 @@ export READNULLCMD="${PAGER}"
 export EDITOR="vim"
 export BROWSER="firefox"
 export XTERM="urxvtc"
-export RSYNC_PROXY="localhost:8118"
 # }}}
 
 # {{{ Manual pages
@@ -66,6 +65,7 @@ alias passgen="< /dev/urandom tr -cd \[:graph:\] | fold -w 32 | head -n 5"
 alias pjson='python -mjson.tool'
 alias yi='~/.cabal/bin/yi'
 alias gyi='yi -f pango'
+alias ptags='ctags -R -f /tmp/tags $(pwd)'
 alias -g rc.lua="/home/danny/.config/awesome/rc.lua"
 alias -g awlib="/usr/share/awesome/lib/"
 alias -g vimfiles="/usr/share/vim/vimfiles/"
@@ -148,7 +148,6 @@ zstyle ':vcs_info:*' enable bzr git
 
 # {{{ Functions
 
-function cl () { cd $1 && ls }
 function covtest () {
     nosetests --cover-package=$1 --cover-erase --with-coverage
 }
