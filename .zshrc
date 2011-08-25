@@ -102,7 +102,7 @@ setopt nobgnice
 setopt noclobber
 setopt shwordsplit
 setopt interactivecomments
-setopt autopushd pushdminus pushdsilent pushdtohome
+setopt pushdminus pushdsilent pushdtohome
 setopt histreduceblanks histignorespace inc_append_history
 setopt nobeep
 
