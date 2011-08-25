@@ -82,7 +82,14 @@ export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
 # }}}
 
 # {{{ RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+#[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+#}}}
+
+# {{{ rbenv
+export PATH="${HOME}/.rbenv/bin:${PATH}"
+export PATH="${HOME}/.rbenv/shims:${PATH}"
+source "${HOME}/.rbenv/libexec/../completions/rbenv.zsh"
+rbenv rehash 2>/dev/null
 #}}}
 
 # }}}
