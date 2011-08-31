@@ -62,7 +62,7 @@ alias calc="bc -l <<<"
 alias iodrag="ionice -c3 nice -n19"
 alias spell="aspell -a <<< "
 alias passgen="< /dev/urandom tr -cd \[:graph:\] | fold -w 32 | head -n 5"
-alias pjson='python -mjson.tool'
+alias pjson='python2 -mjson.tool'
 alias yi='~/.cabal/bin/yi'
 alias gyi='yi -f pango'
 alias ptags='ctags -R -f /tmp/tags $(pwd)'
@@ -102,7 +102,7 @@ setopt nobgnice
 setopt noclobber
 setopt shwordsplit
 setopt interactivecomments
-setopt pushdminus pushdsilent pushdtohome
+setopt pushdminus pushdtohome
 setopt histreduceblanks histignorespace inc_append_history
 setopt nobeep
 
