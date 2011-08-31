@@ -50,7 +50,11 @@ nnoremap <silent> <F8> :TlistToggle<CR>
 cmap w!! w !sudo tee % >/dev/null
 
 " Update ctags
-nmap <F2> :!ctags -R -f /tmp/tags `pwd`<CR>
+nnoremap <F2> :!ctags -R -f /tmp/tags `pwd`<CR>
+
+" X Clipboard
+vnoremap <leader>y :w !xsel -i -b<CR><CR>
+nnoremap <leader>p :r!xsel -b<CR>
 
 " Special handling for some file formats.
 hi Folded guibg=gray15 guifg=gray50
