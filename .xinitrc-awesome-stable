@@ -2,7 +2,7 @@ urxvtd -q -o -f &
 xmodmap ~/.Xmodmap &
 # disable beep
 xset -b
-wmname LG3D
+wmname compiz
 xrandr --output VGA1 --mode 1680x1050
 xrandr --output VGA1 --right-of LVDS1
 parcellite &
