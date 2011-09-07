@@ -38,6 +38,7 @@ alias la="ls -a"
 alias lfi="ls -l | egrep -v '^d'"
 alias ldi="ls -l | egrep '^d'"
 alias lst="ls -htl | grep `date +%Y-%m-%d`"
+alias lo="ls -la --color | awk '{k=0;for(i=0;i<=8;i++)k+=((substr(\$1,i+2,1)~/[rwx]/)*2^(8-i));if(k)printf(\" %0o \",k);print}'"
 alias grep="grep --color=always"
 alias cp="cp -ia"
 alias mv="mv -i"
@@ -152,7 +153,7 @@ function covtest () {
     nosetests --cover-package=$1 --cover-erase --with-coverage
 }
 function backward-kill-partial-word {
-    local WORDCHARS="${WORDCHARS//[\/.]/}"
+    local WORDCHARS="${WORDCHARS//\//}"
 	zle backward-kill-word "$@"
 }
 function eave () { diff <(lsof -p $1) <(sleep 10; lsof -p $1) }
