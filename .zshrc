@@ -33,12 +33,11 @@ export LESS_TERMCAP_us=$'\E[1;32m'    # begin underline
 alias ..="cd .."
 alias ...="cd ../.."
 alias ls="ls -F --color=always"
-alias ll="ls -l"
+alias ll="ls -la --color | awk '{k=0;for(i=0;i<=8;i++)k+=((substr(\$1,i+2,1)~/[rwx]/)*2^(8-i));if(k)printf(\" %0o \",k);print}'"
 alias la="ls -a"
 alias lfi="ls -l | egrep -v '^d'"
 alias ldi="ls -l | egrep '^d'"
 alias lst="ls -htl | grep `date +%Y-%m-%d`"
-alias lo="ls -la --color | awk '{k=0;for(i=0;i<=8;i++)k+=((substr(\$1,i+2,1)~/[rwx]/)*2^(8-i));if(k)printf(\" %0o \",k);print}'"
 alias grep="grep --color=always"
 alias cp="cp -ia"
 alias mv="mv -i"
@@ -67,6 +66,7 @@ alias pjson='python2 -mjson.tool'
 alias yi='~/.cabal/bin/yi'
 alias gyi='yi -f pango'
 alias ptags='ctags -R -f /tmp/tags $(pwd)'
+alias sp='urxvtc -cd $(pwd)'
 alias -g rc.lua="/home/danny/.config/awesome/rc.lua"
 alias -g awlib="/usr/share/awesome/lib/"
 alias -g vimfiles="/usr/share/vim/vimfiles/"
