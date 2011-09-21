@@ -70,6 +70,10 @@ alias sp='urxvtc -cd $(pwd)'
 alias -g rc.lua="/home/danny/.config/awesome/rc.lua"
 alias -g awlib="/usr/share/awesome/lib/"
 alias -g vimfiles="/usr/share/vim/vimfiles/"
+
+alias identica="chromium --app=http://identi.ca"
+alias twitter="chromium --app=http://twitter.com"
+alias googleplus="chromium --app=http://plus.google.com"
 # }}}
 
 # {{{ Completion
