@@ -1,5 +1,5 @@
 urxvtd -q -o -f &
-xmodmap ~/.Xmodmap &
+# xmodmap ~/.Xmodmap &
 # disable beep
 xset -b
 wmname compiz
@@ -7,6 +7,5 @@ xrandr --output VGA1 --mode 1680x1050
 xrandr --output VGA1 --right-of LVDS1
 xscreensaver -no-splash &
 parcellite &
-autossh -M 1150 -ND 1080 dannynavarro.net &
 cairo-compmgr &
-exec ck-launch-session awesome
+exec ck-launch-session /usr/bin/awesome
