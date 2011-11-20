@@ -31,7 +31,6 @@ layouts =
 {
     awful.layout.suit.tile,
     awful.layout.suit.floating,
-    awful.layout.suit.max
 }
 -- }}}
 
@@ -134,7 +133,7 @@ for s = 1, screen.count() do
     netwidget = widget({ type = "textbox" })
     vicious.register(netwidget,
                      vicious.widgets.net,
-                     '<span color="#7F9F7F">${wlan0 down_kb}</span> <span color="#CC9393">${wlan0 up_kb}</span>',
+                     '<span color="#7F9F7F">${eth0 down_kb}</span> <span color="#CC9393">${eth0 up_kb}</span>',
                      3)
     -- Create memory widget
     memwidget = widget ({ type = "textbox" })
@@ -228,6 +227,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "Return", function () awful.util.spawn(browser) end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
+    awful.key({ "Mod1"             }, "l", function () awful.util.spawn("xscreensaver-command -lock") end),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),

@@ -1,25 +1,12 @@
-#!/bin/sh
-
-# Xmodmap
-xmodmap ~/.Xmodmap &
-
-# Cairo composition
-cairo-compmgr &
-
-# Window manager name
-wmname LG3D &
-
-# Terminal
 urxvtd -q -o -f &
-
-# Clipboard manager
+xmodmap ~/.Xmodmap &
+# disable beep
+xset -b
+wmname compiz
+xrandr --output VGA1 --mode 1680x1050
+xrandr --output VGA1 --right-of LVDS1
+xscreensaver -no-splash &
 parcellite &
-
-# Load nvidia settings
-nvidia-settings -l
-
-# WICD tray
-wicd-gtk &
-
-# exec dbus-launch awesome
-exec /usr/bin/awesome
+autossh -M 1150 -ND 1080 dannynavarro.net &
+cairo-compmgr &
+exec ck-launch-session awesome

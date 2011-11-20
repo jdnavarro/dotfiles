@@ -16,7 +16,6 @@ export READNULLCMD="${PAGER}"
 export EDITOR="vim"
 export BROWSER="firefox"
 export XTERM="urxvtc"
-export RSYNC_PROXY="localhost:8118"
 # }}}
 
 # {{{ Manual pages
@@ -34,7 +33,7 @@ export LESS_TERMCAP_us=$'\E[1;32m'    # begin underline
 alias ..="cd .."
 alias ...="cd ../.."
 alias ls="ls -F --color=always"
-alias ll="ls -l"
+alias ll="ls -la --color | awk '{k=0;for(i=0;i<=8;i++)k+=((substr(\$1,i+2,1)~/[rwx]/)*2^(8-i));if(k)printf(\" %0o \",k);print}'"
 alias la="ls -a"
 alias lfi="ls -l | egrep -v '^d'"
 alias ldi="ls -l | egrep '^d'"
@@ -63,12 +62,18 @@ alias calc="bc -l <<<"
 alias iodrag="ionice -c3 nice -n19"
 alias spell="aspell -a <<< "
 alias passgen="< /dev/urandom tr -cd \[:graph:\] | fold -w 32 | head -n 5"
-alias pjson='python -mjson.tool'
+alias pjson='python2 -mjson.tool'
 alias yi='~/.cabal/bin/yi'
 alias gyi='yi -f pango'
+alias ptags='ctags -R -f /tmp/tags $(pwd)'
+alias sp='urxvtc -cd $(pwd)'
 alias -g rc.lua="/home/danny/.config/awesome/rc.lua"
 alias -g awlib="/usr/share/awesome/lib/"
 alias -g vimfiles="/usr/share/vim/vimfiles/"
+
+alias identica="chromium --app=http://identi.ca"
+alias twitter="chromium --app=http://twitter.com"
+alias googleplus="chromium --app=http://plus.google.com"
 # }}}
 
 # {{{ Completion
@@ -81,8 +86,16 @@ source /usr/bin/virtualenvwrapper.sh
 export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
 # }}}
 
-# {{{ Syntax highlighting
-source $HOME/sandbox/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# {{{ RVM
+#[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+#}}}
+
+# {{{ rbenv
+export PATH="${HOME}/.rbenv/bin:${PATH}"
+export PATH="${HOME}/.rbenv/shims:${PATH}"
+source "${HOME}/.rbenv/libexec/../completions/rbenv.zsh"
+rbenv rehash 2>/dev/null
+#}}}
 
 # }}}
 
@@ -94,7 +107,7 @@ setopt nobgnice
 setopt noclobber
 setopt shwordsplit
 setopt interactivecomments
-setopt autopushd pushdminus pushdsilent pushdtohome
+setopt pushdminus pushdtohome
 setopt histreduceblanks histignorespace inc_append_history
 setopt nobeep
 
@@ -140,12 +153,11 @@ zstyle ':vcs_info:*' enable bzr git
 
 # {{{ Functions
 
-function cl () { cd $1 && ls }
 function covtest () {
     nosetests --cover-package=$1 --cover-erase --with-coverage
 }
 function backward-kill-partial-word {
-    local WORDCHARS="${WORDCHARS//[\/.]/}"
+    local WORDCHARS="${WORDCHARS//\//}"
 	zle backward-kill-word "$@"
 }
 function eave () { diff <(lsof -p $1) <(sleep 10; lsof -p $1) }

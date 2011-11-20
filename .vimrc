@@ -30,7 +30,8 @@ set showcmd
 set wildmenu
 set wildmode=longest,list
 set bg=dark
-"set autochdir
+set autochdir
+set tags=/tmp/tags
 let python_highlight_all = 1
 
 " Persistent Undo
@@ -38,12 +39,6 @@ set undofile
 set undodir=~/.vim/undo
 set undolevels=1000
 set undoreload=10000
-
-" Yankring
-nnoremap <silent> <F9> :YRShow<CR>
-let g:yankring_window_use_horiz=0
-let g:yankring_history_dir="~/.vim/yankring_history"
-let g:yankring_max_element_length=10240
 
 " xmledit
 "let xml_use_xhtml = 1
@@ -54,14 +49,21 @@ nnoremap <silent> <F8> :TlistToggle<CR>
 " Save as root
 cmap w!! w !sudo tee % >/dev/null
 
+" Update ctags
+nnoremap <F2> :!ctags -R -f /tmp/tags `pwd`<CR>
+
+" X Clipboard
+vnoremap <leader>y :w !xsel -i -b<CR><CR>
+nnoremap <leader>p :r!xsel -b<CR>
+
 " Special handling for some file formats.
 hi Folded guibg=gray15 guifg=gray50
-au FileType python set nowrap list textwidth=74
+au FileType python set nowrap list textwidth=74 sw=4
 au BufNewFile,BufRead *.pt set ft=html
 au BufNewFile,BufRead *.zcml set ft=xml
 au BufNewFile,BufRead *.txt set textwidth=74
 au FileType html,xml,pt,zcml set sw=2
-au FileType rst set textwidth=74 spell
+au FileType rst set textwidth=80 spell
 
 au FileType python set omnifunc=pythoncomplete#Complete
 au FileType javascript set omnifunc=javascriptcomplete#CompleteJS
