@@ -67,6 +67,7 @@ alias yi='~/.cabal/bin/yi'
 alias gyi='yi -f pango'
 alias ptags='ctags -R -f /tmp/tags $(pwd)'
 alias sp='urxvtc -cd $(pwd)'
+alias sudo='sudo -E'
 alias -g rc.lua="/home/danny/.config/awesome/rc.lua"
 alias -g awlib="/usr/share/awesome/lib/"
 alias -g vimfiles="/usr/share/vim/vimfiles/"
