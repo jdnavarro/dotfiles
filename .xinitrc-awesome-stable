@@ -7,6 +7,6 @@ xrandr --output VGA1 --mode 1680x1050
 xrandr --output VGA1 --right-of LVDS1
 xscreensaver -no-splash &
 parcellite &
-autossh -M 1150 -ND 1080 dannynavarro.net &
 cairo-compmgr &
+git-dude ~/sandbox/personal &
 exec ck-launch-session awesome
