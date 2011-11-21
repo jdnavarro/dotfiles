@@ -106,7 +106,7 @@ kbdcfg.switch = function ()
    kbdcfg.current = kbdcfg.current % #(kbdcfg.layout) + 1
    local t = " " .. kbdcfg.layout[kbdcfg.current] .. " "
    kbdcfg.widget.text = t
-   os.execute( kbdcfg.cmd .. t )
+   os.execute( kbdcfg.cmd .. t .. "-option compose:menu" )
 end
 
 for s = 1, screen.count() do
