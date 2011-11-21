@@ -1,5 +1,5 @@
 urxvtd -q -o -f &
-xmodmap ~/.Xmodmap &
+# xmodmap ~/.Xmodmap &
 # disable beep
 xset -b
 wmname compiz
@@ -9,4 +9,4 @@ xscreensaver -no-splash &
 parcellite &
 cairo-compmgr &
 git-dude ~/sandbox/personal &
-exec ck-launch-session awesome
+exec ck-launch-session /usr/bin/awesome
