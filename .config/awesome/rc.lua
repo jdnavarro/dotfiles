@@ -107,7 +107,6 @@ kbdcfg.switch = function ()
    local t = " " .. kbdcfg.layout[kbdcfg.current] .. " "
    kbdcfg.widget.text = t
    os.execute( kbdcfg.cmd .. t )
-   os.execute( "xmodmap ~/.Xmodmap" )
 end
 
 for s = 1, screen.count() do
