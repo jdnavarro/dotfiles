@@ -63,7 +63,6 @@ alias iodrag="ionice -c3 nice -n19"
 alias spell="aspell -a <<< "
 alias passgen="< /dev/urandom tr -cd \[:graph:\] | fold -w 32 | head -n 5"
 alias pjson='python2 -mjson.tool'
-alias yi='~/.cabal/bin/yi'
 alias gyi='yi -f pango'
 alias ptags='ctags -R -f /tmp/tags $(pwd)'
 alias sp='urxvtc -cd $(pwd)'
@@ -96,7 +95,11 @@ export PATH="${HOME}/.rbenv/bin:${PATH}"
 export PATH="${HOME}/.rbenv/shims:${PATH}"
 source "${HOME}/.rbenv/libexec/../completions/rbenv.zsh"
 rbenv rehash 2>/dev/null
-#}}}
+# }}}
+
+# {{{ cabal bin
+export PATH="${HOME}/.cabal/bin:${PATH}"
+# }}}
 
 # }}}
 
