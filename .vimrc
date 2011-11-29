@@ -43,6 +43,9 @@ set undoreload=10000
 " xmledit
 "let xml_use_xhtml = 1
 
+" Quick save
+noremap <Leader>s :update<CR>
+
 " Taglist
 nnoremap <silent> <F8> :TlistToggle<CR>
 
