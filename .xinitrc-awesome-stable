@@ -8,5 +8,6 @@ xrandr --output VGA1 --right-of LVDS1
 xscreensaver -no-splash &
 parcellite &
 cairo-compmgr &
+udiskie &
 git-dude ~/sandbox/personal &
 exec ck-launch-session /usr/bin/awesome
