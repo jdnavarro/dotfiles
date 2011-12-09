@@ -40,9 +40,6 @@ set undodir=~/.vim/undo
 set undolevels=1000
 set undoreload=10000
 
-" xmledit
-"let xml_use_xhtml = 1
-
 " Quick save
 noremap <Leader>s :update<CR>
 
@@ -65,7 +62,7 @@ au FileType python set nowrap list textwidth=74 sw=4
 au BufNewFile,BufRead *.pt set ft=html
 au BufNewFile,BufRead *.zcml set ft=xml
 au BufNewFile,BufRead *.txt set textwidth=74
-au FileType html,xml,pt,zcml set sw=2
+au BufNewFile,BufRead *.html set sw=2
 au FileType rst set textwidth=80 spell
 
 au FileType python set omnifunc=pythoncomplete#Complete
