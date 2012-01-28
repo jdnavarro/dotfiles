@@ -88,13 +88,25 @@ export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
 
 # {{{ RVM
 #[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-#}}}
+# }}}
 
 # {{{ rbenv
-export PATH="${HOME}/.rbenv/bin:${PATH}"
-export PATH="${HOME}/.rbenv/shims:${PATH}"
-source "${HOME}/.rbenv/libexec/../completions/rbenv.zsh"
-rbenv rehash 2>/dev/null
+compctl -K _rbenv rbenv
+
+_rbenv() {
+  local word words completions
+  read -cA words
+  word="${words[2]}"
+
+  if [ "${#words}" -eq 2 ]; then
+    completions="$(rbenv commands)"
+  else
+    completions="$(rbenv completions "${word}")"
+  fi
+
+  reply=("${(ps:\n:)completions}")
+}
+
 # }}}
 
 # {{{ cabal bin
