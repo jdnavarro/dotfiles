@@ -344,6 +344,8 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "Gajim.py" },
       properties = { floating = true } },
+    { rule = { class = "Pidgin" },
+      properties = { floating = true } },
     { rule = { class = "Last.fm" },
       properties = { floating = true } },
     -- Set Firefox to always map on tags number 2 of screen 1.
