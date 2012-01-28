@@ -1,6 +1,6 @@
 set visualbell
 set wildmode=list:full
-set defsearch=g
+set defsearch=d
 set hlsearch
 
 " M-Up/Dn toggles the toolbar and bookmarks bar
