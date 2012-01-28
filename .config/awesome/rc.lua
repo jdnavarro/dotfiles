@@ -34,6 +34,14 @@ layouts =
 }
 -- }}}
 
+-- {{{ Auto Start
+
+awful.util.spawn_with_shell("awsetbg .config/backgrounds/haskell.png")
+awful.util.spawn_with_shell("udiskie")
+awful.util.spawn_with_shell("wpa_gui -t")
+awful.util.spawn_with_shell("wmname compiz")
+awful.util.spawn_with_shell("xautolock -time 15 -locker 'sudo pm-suspend' &")
+
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {}

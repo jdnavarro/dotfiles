@@ -1,13 +1,10 @@
 urxvtd -q -o -f &
-# xmodmap ~/.Xmodmap &
 # disable beep
 xset -b
-wmname compiz
-xrandr --output VGA1 --mode 1680x1050
-xrandr --output VGA1 --right-of LVDS1
-xscreensaver -no-splash &
+xset +fp /usr/share/fonts/local/
 parcellite &
 cairo-compmgr &
-udiskie &
-git-dude ~/sandbox/personal &
-exec ck-launch-session /usr/bin/awesome
+git-dude ~/sandbox/ &
+gnome-sound-applet &
+nvidia-settings -l
+exec ck-launch-session awesome
