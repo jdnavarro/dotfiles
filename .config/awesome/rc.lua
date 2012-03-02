@@ -6,7 +6,6 @@ require("awful.rules")
 require("beautiful")
 -- Notification library
 require("naughty")
-require("eminent")
 require("vicious")
 
 -- {{{ Variable definitions
@@ -39,6 +38,7 @@ layouts =
 awful.util.spawn_with_shell("awsetbg .config/backgrounds/haskell.png")
 awful.util.spawn_with_shell("udiskie")
 awful.util.spawn_with_shell("wpa_gui -t")
+awful.util.spawn_with_shell("volwheel")
 awful.util.spawn_with_shell("wmname compiz")
 awful.util.spawn_with_shell("xautolock -time 15 -locker 'sudo pm-suspend'")
 
@@ -140,7 +140,7 @@ for s = 1, screen.count() do
     netwidget = widget({ type = "textbox" })
     vicious.register(netwidget,
                      vicious.widgets.net,
-                     '<span color="#7F9F7F">${eth0 down_kb}</span> <span color="#CC9393">${eth0 up_kb}</span>',
+                     '<span color="#7F9F7F">${wlan0 down_kb}</span> <span color="#CC9393">${wlan0 up_kb}</span>',
                      3)
     -- Create memory widget
     memwidget = widget ({ type = "textbox" })
