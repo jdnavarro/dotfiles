@@ -5,6 +5,5 @@ xset +fp /usr/share/fonts/local/
 parcellite &
 cairo-compmgr &
 git-dude ~/sandbox/ &
-gnome-sound-applet &
 nvidia-settings -l
 exec ck-launch-session awesome
