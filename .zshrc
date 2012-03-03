@@ -107,6 +107,8 @@ _rbenv() {
   reply=("${(ps:\n:)completions}")
 }
 
+export PATH="$HOME/.rbenv/shims:${PATH}"
+
 # }}}
 
 # {{{ cabal bin
