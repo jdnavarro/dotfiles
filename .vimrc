@@ -60,7 +60,7 @@ nnoremap <leader>p :r!xsel -b<CR>
 hi Folded guibg=gray15 guifg=gray50
 au FileType python set nowrap list textwidth=74 sw=4
 au BufNewFile,BufRead *.pt set ft=html
-au BufNewFile,BufRead *.jinja2 set ft=html
+au BufNewFile,BufRead *.jinja2 set ft=django
 au BufNewFile,BufRead *.zcml set ft=xml
 au BufNewFile,BufRead *.txt set textwidth=74
 au BufNewFile,BufRead *.html set sw=2
