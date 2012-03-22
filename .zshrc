@@ -80,9 +80,10 @@ alias googleplus="chromium --app=http://plus.google.com"
 compctl -k "(add delete draft edit list import preview publish update)" nb
 # }}}
 
-# {{{ Virtualenv
-export WORKON_HOME=$HOME/sandbox/virtualenvs
+# {{{ Virtualenvwrapper
+export WORKON_HOME=$HOME/.virtualenvs/
 source /usr/bin/virtualenvwrapper.sh
+export PROJECT_HOME=$HOME/devel
 export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
 # }}}
 
