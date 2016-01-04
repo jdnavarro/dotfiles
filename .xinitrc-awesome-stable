@@ -1,9 +1,0 @@
-urxvtd -q -o -f &
-# disable beep
-xset -b
-xset +fp /usr/share/fonts/local/
-parcellite &
-cairo-compmgr &
-git-dude ~/sandbox/ &
-nvidia-settings -l
-exec ck-launch-session awesome

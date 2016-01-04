@@ -1,6 +1,0 @@
-#!/bin/sh
-
-# Xmodmap
-xmodmap ~/.Xmodmap &
-
-exec /usr/local/bin/awesome -c /usr/local/etc/xdg/awesome/rc.lua

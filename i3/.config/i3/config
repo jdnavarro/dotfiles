@@ -1,0 +1,127 @@
+set $mod Mod4
+
+font pango:Pragmata Pro 8
+
+# Apps
+
+bindsym $mod+Return exec --no-startup-id "termite -e tmuxa"
+
+bindsym $mod+Shift+Return exec firefox
+
+mode "exec" {
+        bindsym d exec deluge-gtk; mode "default"
+        bindsym k exec kodi; mode "default"
+        bindsym space exec --no-startup-id i3-dmenu-desktop; mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+space mode "exec"
+
+bindsym $mod+bar exec --no-startup-id systemctl suspend
+
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+q exit
+
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -5 && notify-send -u low -t 500 $(xbacklight -get)
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight +5 && notify-send -u low -t 500 $(xbacklight -get)
+bindsym Caps_Lock exec --no-startup-id notify-send -u low -t 500 $(xkb-switch -p)
+
+bindsym Shift+Caps_Lock exec --no-startup-id sleep 0.2 && (xset q | grep "Caps Lock: *on" > /dev/null) && notify-send -u low -t 500 "Caps On" || notify-send -u low -t 500 "Caps Off"
+
+bindsym XF86AudioMute exec --no-startup-id pulseaudio-ctl mute
+bindsym XF86AudioLowerVolume exec --no-startup-id pulseaudio-ctl down
+bindsym XF86AudioRaiseVolume exec --no-startup-id pulseaudio-ctl up
+
+bindsym $mod+t exec --no-startup-id notify-send -u low -t 2000 "$(date)"
+
+# Windows
+
+hide_edge_borders both
+new_window pixel 0
+
+bindsym $mod+w kill
+
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+v split horizontal
+bindsym $mod+s split vertical
+
+bindsym $mod+f fullscreen toggle
+
+bindsym $mod+p focus parent
+bindsym $mod+n focus child
+
+mode "resize" {
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# Workspaces
+
+workspace 5 output DP1
+
+bindsym $mod+bracketleft  workspace prev_on_output
+bindsym $mod+bracketright workspace next_on_output
+bindsym $mod+Left         workspace prev_on_output
+bindsym $mod+Right        workspace next_on_output
+
+bindsym $mod+backtick focus output up
+bindsym $mod+tilde    focus output down
+bindsym $mod+Up       focus output up
+bindsym $mod+Down     focus output down
+
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+bindsym $mod+Shift-Up   move container to output DP1
+bindsym $mod+Shift-Down move container to output eDP1
+
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# Colors - Tomorrow light
+
+client.focused #81a2be #81a2be #1d1f21 #282a2e
+client.focused_inactive #373b41 #373b41 #969896 #282a2e
+client.unfocused #282a2e #282a2e #969896 #282a2e
+client.urgent #373b41 #cc6666 #ffffff #cc6666
+
+# Bar
+
+bar {
+  font pango:Pragmata Pro 8
+  status_command i3status
+  tray_output primary
+  mode hide
+  hidden_state hide
+}

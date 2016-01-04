@@ -1,0 +1,43 @@
+?. -> To evaluate whether it's worth configuring.
+b. -> Blocked on external limitations.
+s. -> Stucked, needs further research/tweaking but not trivial.
+-  -> Trivial TODO
+
+?. neovim
+  ?. https://github.com/int3/vim-extradite
+  ?. https://github.com/vim-utils/vim-husk
+  ?. hscope
+  ?. tagbar
+  ?. indentation guidelines
+  s. clean unusued imports.
+  s. airline dim on X window unfocus.
+  s. Multiple lines for error messages in quickfix/locationlix.
+s. systemd
+  s. systemd userd xorg
+      s. user units: xsel, unclutter, tmux
+- terminal
+  - tmux
+    ? show tabline when more than 1 tab
+    - shortcut monitor activity/silence
+  b. termite font ligatures (ligatures support vte)
+- weechat
+  - logs
+  - vim mode keybindings
+  - notifications
+  - relay android
+- i3
+  - ibar tweaking
+  ?. dynamic workspaces (rust i3ipc)
+  ?. split horizontal timeout
+  ?. exec mode timeout
+  s. whole window mouse resizing
+  s. whole window mouse window move
+- dunst
+  - keybindings
+    - battery
+    - workspaces
+  - changes
+    - 10% battery decrease
+?. ricing
+  ?. tmux powerline
+  ?. neovim: window separator

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+(tmux ls | grep -vq attached && tmux at) || tmux

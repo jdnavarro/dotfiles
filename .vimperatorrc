@@ -1,9 +1,0 @@
-set visualbell
-set wildmode=list:full
-set defsearch=g
-set hlsearch
-
-" M-Up/Dn toggles the toolbar and bookmarks bar
-
-map <A-Down> :set toolbars=navigation,bookmarks<CR>
-map <A-Up> :set toolbars=nonavigation,nobookmarks<CR>

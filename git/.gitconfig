@@ -1,0 +1,16 @@
+[user]
+	name = Danny Navarro
+	email = j@dannynavarro.net
+	signingkey = 80FA6A32
+[alias]
+	st = status
+	ci = commit
+[core]
+	editor = nvim
+	pager = vimpager
+[push]
+	default = simple
+[merge]
+	tool = nvim -d
+[rebase]
+	autosquash = true
