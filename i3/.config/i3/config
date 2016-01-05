@@ -79,10 +79,13 @@ bindsym $mod+bracketright workspace next_on_output
 bindsym $mod+Left         workspace prev_on_output
 bindsym $mod+Right        workspace next_on_output
 
-bindsym $mod+backtick focus output up
-bindsym $mod+tilde    focus output down
-bindsym $mod+Up       focus output up
-bindsym $mod+Down     focus output down
+bindsym $mod+grave       focus output up
+bindsym $mod+Shift+grave focus output down
+bindsym $mod+Up          focus output up
+bindsym $mod+Down        focus output down
+
+bindsym $mod+Shift+Up   move container to output up
+bindsym $mod+Shift+Down move container to output down
 
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -94,9 +97,6 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
-
-bindsym $mod+Shift-Up   move container to output DP1
-bindsym $mod+Shift-Down move container to output eDP1
 
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
