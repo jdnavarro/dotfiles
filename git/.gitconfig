@@ -2,15 +2,25 @@
 	name = Danny Navarro
 	email = j@dannynavarro.net
 	signingkey = 80FA6A32
+
+[github]
+	user = jdnavarro
+	password =
+	oauth-token =
+
+[commit]
+	gpgsign = true
+
 [alias]
+	co = checkout
 	st = status
+	br = branch
 	ci = commit
-[core]
-	editor = nvim
-	pager = vimpager
-[push]
-	default = simple
-[merge]
-	tool = nvim -d
+
 [rebase]
 	autosquash = true
+
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
