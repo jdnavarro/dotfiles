@@ -49,6 +49,7 @@ values."
      javascript
      markdown
      osx
+     rust
      (shell :variables
             shell-default-shell 'eshell
             shell-default-position 'right
