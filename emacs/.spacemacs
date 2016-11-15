@@ -48,6 +48,7 @@ values."
      java
      javascript
      markdown
+     rust
      (shell :variables
             shell-default-shell 'eshell
             shell-default-position 'right
