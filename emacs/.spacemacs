@@ -48,6 +48,7 @@ values."
      java
      javascript
      markdown
+     osx
      (shell :variables
             shell-default-shell 'eshell
             shell-default-position 'right
@@ -145,7 +146,7 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
+   dotspacemacs-default-font '("Menlo"
                                :size 13
                                :weight normal
                                :width normal
@@ -318,7 +319,11 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  (setq-default evil-escape-key-sequence "fj")
+  (setq-default
+   evil-escape-key-sequence "fj"
+   flycheck-scalastylerc "/Users/jnavarro/.config/scalastyle-config.xml"
+   powerline-default-separator 'utf-8)
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
