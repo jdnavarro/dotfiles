@@ -1,0 +1,5 @@
+export PATH="/usr/local/sbin:$HOME/.cabal/bin:$HOME/.local/bin:$PATH"
+export SBT_OPTS="-XX:ReservedCodeCacheSize=512M -Xmx5500M -Xss2M -Dfile.encoding=UTF-8 -XX:+CMSClassUnloadingEnabled -XX:+UseConcMarkSweepGC -XX:MaxMetaspaceSize=1G"
+export GTAGSCONF="/usr/local/share/gtags/gtags.conf"
+export MPD_HOST="titin.lan"
+export LANG="en_US.UTF-8"
