@@ -1,5 +1,6 @@
-export PATH="/usr/local/sbin:$HOME/.cabal/bin:$HOME/.local/bin:$PATH"
+export PATH="/usr/local/sbin:$HOME/.cabal/bin:$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 export SBT_OPTS="-XX:ReservedCodeCacheSize=512M -Xmx5500M -Xss2M -Dfile.encoding=UTF-8 -XX:+CMSClassUnloadingEnabled -XX:+UseConcMarkSweepGC -XX:MaxMetaspaceSize=1G"
+export RUST_SRC_PATH="/Users/jnavarro/Develop/rust/rust/src"
 export GTAGSCONF="/usr/local/share/gtags/gtags.conf"
 export MPD_HOST="titin.lan"
 export LANG="en_US.UTF-8"
