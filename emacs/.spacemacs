@@ -322,9 +322,9 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq-default
    evil-escape-key-sequence "fj"
-   flycheck-scalastylerc "/Users/jnavarro/.config/scalastyle-config.xml"
-   powerline-default-separator 'utf-8)
-  )
+   flycheck-scalastylerc "~/.config/scalastyle-config.xml"
+   powerline-default-separator 'utf-8
+   ))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
