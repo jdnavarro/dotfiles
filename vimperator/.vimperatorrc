@@ -1,6 +1,10 @@
 set gui=nonavigation
 set noscrollbars
 set defsearch=g
-set status+=ssl
+set status+=ssl,zoomlevel
 "Show mouse over links in content area
 set showstatuslinks=3
+set animations
+set maxitems=10
+set hlsearch
+set focuscontent
