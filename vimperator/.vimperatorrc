@@ -2,3 +2,5 @@ set gui=nonavigation
 set noscrollbars
 set defsearch=g
 set status+=ssl
+"Show mouse over links in content area
+set showstatuslinks=3
