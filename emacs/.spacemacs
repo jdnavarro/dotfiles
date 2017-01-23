@@ -325,7 +325,7 @@ you should place your code here."
    flycheck-scalastylerc "~/.config/scalastyle-config.xml"
    js2-basic-offset 2
    js-indent-level 2
-   powerline-default-separator 'utf-8
+   powerline-default-separator nil
    ))
 
 ;; Do not write anything past this comment. This is where Emacs will
