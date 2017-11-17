@@ -1,0 +1,1 @@
+classpathTypes += "maven-plugin"
