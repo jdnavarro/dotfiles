@@ -11,6 +11,7 @@
       (:prefix "c"
         :desc "Sort lines alphabetically" :v "s" #'sort-lines)
       (:prefix "w"
+        "F" #'make-frame
         (:prefix "m"
             "m"   #'doom/window-zoom
             "s"   #'window-maximize-horizontally
