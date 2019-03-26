@@ -1,9 +1,8 @@
 ;;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
 
-(setq doom-font (font-spec :family "Fira Code" :size 16)
-      doom-big-font (font-spec :family "Fira Code" :size 20)
-      display-line-numbers-type nil
-      haskell-process-type 'cabal-new-repl)
+(setq doom-font (font-spec :family "Source Code Pro" :size 20)
+      doom-big-font (font-spec :family "Source Code Pro" :size 26)
+      display-line-numbers-type nil)
 
 ;;
 ;; Key bindings
@@ -11,11 +10,13 @@
       (:prefix "c"
         :desc "Sort lines alphabetically" :v "s" #'sort-lines)
       (:prefix "w"
-        "F" #'make-frame
-        (:prefix "m"
-            "m"   #'doom/window-zoom
-            "s"   #'window-maximize-horizontally
-            "v"   #'window-maximize-vertically)))
+        "F" #'make-frame))
+
+(after! projectile
+   (projectile-register-project-type
+      'bazel '("WORKSPACE")
+      :compile "bazel build //..."
+      :test "bazel test //..."))
 
 (after! org
   (load "~/Sync/org/orgmode.el"))
