@@ -13,7 +13,10 @@
       (:prefix "c"
         :desc "Sort lines alphabetically" :v "s" #'sort-lines)
       (:prefix "w"
-        "F" #'make-frame))
+        "F" #'make-frame)
+      (:prefix "/"
+        ; Universal argument doesn't seem to work with the function wrapper
+        :desc "Search project" "p" #'counsel-rg))
 
 (after! projectile
    (projectile-register-project-type
