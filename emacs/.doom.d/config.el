@@ -2,7 +2,10 @@
 
 (setq doom-font (font-spec :family "Source Code Pro" :size 20)
       doom-big-font (font-spec :family "Source Code Pro" :size 26)
-      display-line-numbers-type nil)
+      display-line-numbers-type nil
+      org-log-done 'time
+      evil-escape-excluded-states '(normal multiedit emacs motion)
+      )
 
 ;;
 ;; Key bindings
