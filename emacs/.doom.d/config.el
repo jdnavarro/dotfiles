@@ -1,10 +1,11 @@
 ;;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
 
-(setq doom-font (font-spec :family "Source Code Pro" :size 20)
-      doom-big-font (font-spec :family "Source Code Pro" :size 26)
+(setq doom-font (font-spec :family "SauceCodePro Nerd Font Mono" :size 20)
+      doom-big-font (font-spec :family "SauceCodePro Nerd Font Mono" :size 26)
       display-line-numbers-type nil
       org-log-done 'time
-      evil-escape-excluded-states '(normal multiedit emacs motion)
+      evil-escape-excluded-states '(normal emacs motion)
+      show-trailing-whitespace t
       )
 
 ;;
@@ -13,10 +14,7 @@
       (:prefix "c"
         :desc "Sort lines alphabetically" :v "s" #'sort-lines)
       (:prefix "w"
-        "F" #'make-frame)
-      (:prefix "/"
-        ; Universal argument doesn't seem to work with the function wrapper
-        :desc "Search project" "p" #'counsel-rg))
+        "F" #'make-frame))
 
 (after! projectile
    (projectile-register-project-type
