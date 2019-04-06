@@ -7,13 +7,11 @@ function global_alias
   case "t"
     commandline -rt '| tail'
   case "g"
-    commandline -rt '| grep'
+    commandline -rt '| rg'
+  case "f"
+    commandline -rt '| fzf'
   case "w"
     commandline -rt '| wc'
-  case "cc"
-    commandline -rt '| ccze -A'
-  case "cl"
-    commandline -rt '| ccze -A | less'
   case "v"
     commandline -rt '| vimpager'
   case "e"
