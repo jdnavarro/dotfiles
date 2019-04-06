@@ -1,7 +1,7 @@
 ;;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
 
-(setq doom-font (font-spec :family "SauceCodePro Nerd Font Mono" :size 20)
-      doom-big-font (font-spec :family "SauceCodePro Nerd Font Mono" :size 26)
+(setq doom-font (font-spec :family "Source Code Pro" :size 20)
+      doom-big-font (font-spec :family "Source Code Pro" :size 26)
       display-line-numbers-type nil
       org-log-done 'time
       evil-escape-excluded-states '(normal emacs motion)
