@@ -1,4 +1,3 @@
-# Defined in - @ line 0
-function g --wraps hub --description 'alias g=hub'
+function g --wraps git --description 'alias g=git'
 	hub  $argv;
 end
