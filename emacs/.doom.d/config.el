@@ -24,5 +24,3 @@
 
 (after! org
   (load "~/Sync/org/orgmode.el"))
-
-(direnv-mode)
