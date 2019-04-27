@@ -6,6 +6,7 @@
       org-log-done 'time
       evil-escape-excluded-states '(normal emacs motion)
       show-trailing-whitespace t
+      psc-ide-port 15375
       )
 
 ;;
