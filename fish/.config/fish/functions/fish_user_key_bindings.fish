@@ -7,7 +7,7 @@ function global_alias
   case "t"
     commandline -rt '| tail'
   case "g"
-    commandline -rt '| rg'
+    commandline -rt '| rg '
   case "f"
     commandline -rt '| fzf'
   case "w"
