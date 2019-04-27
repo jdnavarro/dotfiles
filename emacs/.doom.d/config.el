@@ -13,6 +13,8 @@
 (map! :leader
       (:prefix "c"
         :desc "Sort lines alphabetically" :v "s" #'sort-lines)
+      (:prefix "f"
+        :desc "Diff init.el with init.example.el" "D"   #'ediff-private-init-and-emacs-init)
       (:prefix "w"
         "F" #'make-frame))
 
