@@ -1,9 +1,11 @@
 jethrokuan/z
-rafaelrinaldi/pure
 jethrokuan/fzf
 edc/bass
 oh-my-fish/plugin-direnv
-FabioAntunes/fish-nvm
 franciscolourenco/done
 decors/fish-colored-man
 oh-my-fish/plugin-await
+evanlucas/fish-kubectl-completions
+rafaelrinaldi/pure
+ajeetdsouza/zoxide
+lilyball/nix-env.fish
