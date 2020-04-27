@@ -1,0 +1,19 @@
+[user]
+	name = Danny Navarro
+	email = j@dannynavarro.net
+	signingkey = 4A96D1B9DBB5E7E9
+[alias]
+	st = status
+	br = branch
+	ci = commit
+	co = checkout
+[rebase]
+	autosquash = true
+[github]
+	user = jdnavarro
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg
+[pull]
+	rebase = true
