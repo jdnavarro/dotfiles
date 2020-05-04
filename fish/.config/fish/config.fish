@@ -9,6 +9,7 @@ set -x BROWSER "firefox"
 set -x EDITOR "nvim"
 set -x PAGER "bat"
 set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
+set -x TSSERVER_LOG_FILE "/tmp/tsserver.log"
 
 abbr -a -- hm history merge
 
