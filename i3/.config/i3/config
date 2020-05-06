@@ -1,127 +1,166 @@
+# Initialization
+exec --no-startup-id picom --backend xrender
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+#exec_always --no-startup-id /usr/bin/xmodmap /home/danny/.Xmodmap
+#exec_always --no-startup-id setxkbmap -layout us,es -option grp:ctrls_toggle
+
 set $mod Mod4
 
-font pango:Pragmata Pro 8
+font pango:monospace 8
 
-# Apps
+# Use pactl to adjust volume in PulseAudio.
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-bindsym $mod+Return exec --no-startup-id "termite -e tmuxa"
+floating_modifier $mod
 
-bindsym $mod+Shift+Return exec firefox
+bindsym $mod+Return exec kitty
 
-mode "exec" {
-        bindsym d exec deluge-gtk; mode "default"
-        bindsym k exec kodi; mode "default"
-        bindsym space exec --no-startup-id i3-dmenu-desktop; mode "default"
-        bindsym Escape mode "default"
-}
-bindsym $mod+space mode "exec"
-
-bindsym $mod+bar exec --no-startup-id systemctl suspend
-
-bindsym $mod+Shift+c reload
-bindsym $mod+Shift+r restart
-bindsym $mod+Shift+q exit
-
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -5 && notify-send -u low -t 500 $(xbacklight -get)
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight +5 && notify-send -u low -t 500 $(xbacklight -get)
-bindsym Caps_Lock exec --no-startup-id notify-send -u low -t 500 $(xkb-switch -p)
-
-bindsym Shift+Caps_Lock exec --no-startup-id sleep 0.2 && (xset q | grep "Caps Lock: *on" > /dev/null) && notify-send -u low -t 500 "Caps On" || notify-send -u low -t 500 "Caps Off"
-
-bindsym XF86AudioMute exec --no-startup-id pulseaudio-ctl mute
-bindsym XF86AudioLowerVolume exec --no-startup-id pulseaudio-ctl down
-bindsym XF86AudioRaiseVolume exec --no-startup-id pulseaudio-ctl up
-
-bindsym $mod+t exec --no-startup-id notify-send -u low -t 2000 "$(date)"
-
-# Windows
-
-hide_edge_borders both
-new_window pixel 0
-
+# kill focused window
 bindsym $mod+w kill
 
+# start dmenu (a program launcher)
+# bindsym $mod+space exec dmenu_run
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+#bindsym $mod+space exec --no-startup-id i3-dmenu-desktop
+
+# change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
+# move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-bindsym $mod+v split horizontal
-bindsym $mod+s split vertical
+bindsym $mod+v split h
+bindsym $mod+s split v
 
+# enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
-bindsym $mod+p focus parent
-bindsym $mod+n focus child
+# change container layout (stacked, tabbed, toggle split)
+#bindsym $mod+t layout tabbed
+bindsym $mod+x layout toggle split
 
+# focus the parent container
+bindsym $mod+a focus parent
+bindsym $mod+z focus child
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+bindsym $mod+period workspace next
+bindsym $mod+comma workspace prev
+bindsym $mod+Tab workspace back_and_forth
+
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
 mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
         bindsym h resize shrink width 10 px or 10 ppt
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
 
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
 }
+
 bindsym $mod+r mode "resize"
 
-# Workspaces
-
-workspace 5 output DP1
-
-bindsym $mod+bracketleft  workspace prev_on_output
-bindsym $mod+bracketright workspace next_on_output
-bindsym $mod+Left         workspace prev_on_output
-bindsym $mod+Right        workspace next_on_output
-
-bindsym $mod+grave       focus output up
-bindsym $mod+Shift+grave focus output down
-bindsym $mod+Up          focus output up
-bindsym $mod+Down        focus output down
-
-bindsym $mod+Shift+Up   move container to output up
-bindsym $mod+Shift+Down move container to output down
-
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
-
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
-
-# Colors - Tomorrow light
-
-client.focused #81a2be #81a2be #1d1f21 #282a2e
-client.focused_inactive #373b41 #373b41 #969896 #282a2e
-client.unfocused #282a2e #282a2e #969896 #282a2e
-client.urgent #373b41 #cc6666 #ffffff #cc6666
-
-# Bar
-
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
 bar {
-  font pango:Pragmata Pro 8
-  status_command i3status
-  tray_output primary
-  mode hide
-  hidden_state hide
+        status_command i3blocks
+	position top
+	mode hide
+	hidden_state hide
+	modifier $mod
 }
+
+default_border pixel 4
+hide_edge_borders smart
+
+# class                 border  bground text    indicator child_border
+client.focused          #6272A4 #6272A4 #F8F8F2 #ff92d0   #6272A4
+client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+
+client.background       #F8F8F2
+
+#bar {
+#  colors {
+#    background #282A36
+#    statusline #F8F8F2
+#    separator  #44475A
+#
+#    focused_workspace  #44475A #44475A #F8F8F2
+#    active_workspace   #282A36 #44475A #F8F8F2
+#    inactive_workspace #282A36 #282A36 #BFBFBF
+#    urgent_workspace   #FF5555 #FF5555 #F8F8F2
+#    binding_mode       #FF5555 #FF5555 #F8F8F2
+#  }
+#}
+
+bindsym $mod+space exec "dmenu_run -nf '#F8F8F2' -nb '#282A36' -sb '#6272A4' -sf '#F8F8F2' -fn 'monospace-10' -p 'dmenu%'"
