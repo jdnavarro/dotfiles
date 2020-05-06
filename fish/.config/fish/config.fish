@@ -4,7 +4,7 @@ if status is-login
     end
 end
 
-set -x PATH ~/.emacs.d/bin ~/.local/bin ~/.cargo/bin (yarn global bin) $PATH
+set -x PATH ~/.emacs.d/bin ~/.local/bin ~/.cargo/bin (yarn global bin) /usr/share/bcc/tools $PATH
 set -x BROWSER "firefox"
 set -x EDITOR "nvim"
 set -x PAGER "bat"
