@@ -30,12 +30,12 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/Sync/org/")
 
+(after! org
+  (load! "~/Sync/org/orgmode.el"))
+
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type nil)
-
-(after! org
-  (load "~/Sync/org/orgmode.el"))
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
