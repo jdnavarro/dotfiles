@@ -1,8 +1,9 @@
 # Initialization
-exec --no-startup-id picom --backend xrender
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+#exec --no-startup-id picom --backend xrender
+#exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 set $mod Mod4
+set $alt Mod1
 
 font pango:monospace 8
 
@@ -16,6 +17,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym $mod+space exec --no-startup-id rofi -show drun
 bindsym $mod+Return exec kitty
 bindsym $mod+Shift+Return exec firefox
+bindsym $mod+$alt+Return exec emacs
 
 # kill focused window
 bindsym $mod+w kill
