@@ -1,4 +1,3 @@
-# Defined in - @ line 1
-function xc --description 'alias xc=xsel --clipboard --input'
-	xsel --clipboard --input $argv;
+function xc
+	kitty +kitten clipboard $argv;
 end
