@@ -1,11 +1,11 @@
 # Initialization
-#exec --no-startup-id picom --backend xrender
+exec --no-startup-id picom --backend xrender
 #exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 set $mod Mod4
 set $alt Mod1
 
-font pango:monospace 8
+font pango:iosevka 8
 
 floating_modifier $mod
 
@@ -17,7 +17,9 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym $mod+space exec --no-startup-id rofi -show drun
 bindsym $mod+Return exec kitty
 bindsym $mod+Shift+Return exec firefox
-bindsym $mod+$alt+Return exec emacs
+bindsym $mod+$alt+Return exec emacsclient -nc
+
+bindsym $mod+Shift+space floating toggle
 
 # kill focused window
 bindsym $mod+w kill
@@ -86,7 +88,7 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 bindsym $mod+period workspace next
-bindsym $mod+Shiftperiod move container to workspace next
+bindsym $mod+Shift+period move container to workspace next
 bindsym $mod+comma workspace prev
 bindsym $mod+Shift+comma move container to workspace prev
 bindsym $mod+Tab workspace back_and_forth
