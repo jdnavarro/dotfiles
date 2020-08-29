@@ -55,7 +55,3 @@
 ;; they are implemented.
 
 (setq rustic-lsp-server 'rust-analyzer)
-
-(after! haskell
-   (setq flycheck-disabled-checkers '(haskell-ghc)))
-
