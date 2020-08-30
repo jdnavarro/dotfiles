@@ -1,3 +1,3 @@
-function et --wraps emacsclient --description 'alias et=emacsclient -t'
-    emacsclient -t $argv
+function et --wraps emacsclient --description 'alias e=emacsclient -nw'
+    emacsclient -nw $argv
 end

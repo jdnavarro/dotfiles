@@ -50,5 +50,5 @@
 ;; our package manager can't deal with; see raxod502/straight.el#279)
 ;(package! builtin-package :recipe (:branch "develop"))
 
-(package! emojify)
-(package! flycheck :recipe (:local-repo "~/Devel/flycheck"))
+;(package! emojify)
+;(package! flycheck :recipe (:local-repo "~/Devel/flycheck"))
