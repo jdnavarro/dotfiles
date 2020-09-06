@@ -1,5 +1,6 @@
 # Initialization
-exec --no-startup-id picom --backend xrender
+exec --no-startup-id picom --backend glx
+exec --no-startup-id unclutter
 #exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 set $mod Mod4
@@ -18,6 +19,9 @@ bindsym $mod+space exec --no-startup-id rofi -show drun
 bindsym $mod+Return exec kitty
 bindsym $mod+Shift+Return exec firefox
 bindsym $mod+$alt+Return exec emacsclient -nc
+
+bindsym $mod+$alt+t exec --no-startup-id notify-send $(date +'%H:%M')
+bindsym $mod+$alt+d exec --no-startup-id notify-send $(date +'%a %d')
 
 bindsym $mod+Shift+space floating toggle
 
@@ -93,9 +97,12 @@ bindsym $mod+comma workspace prev
 bindsym $mod+Shift+comma move container to workspace prev
 bindsym $mod+Tab workspace back_and_forth
 
+bindsym $mod+m mark M
+bindsym $mod+g [con_mark=M] focus
+bindsym $mod+o swap container with mark M
+
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
