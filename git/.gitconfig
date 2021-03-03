@@ -17,5 +17,3 @@
 	program = gpg
 [pull]
 	rebase = true
-[credential]
-	helper = /usr/lib/git-core/git-credential-libsecret

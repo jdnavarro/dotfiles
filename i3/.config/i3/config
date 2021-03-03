@@ -1,5 +1,5 @@
 # Initialization
-exec --no-startup-id picom --backend glx
+exec --no-startup-id picom
 exec --no-startup-id unclutter
 #exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
@@ -18,7 +18,9 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym $mod+space exec --no-startup-id rofi -show drun
 bindsym $mod+Return exec kitty
 bindsym $mod+Shift+Return exec firefox
-bindsym $mod+$alt+Return exec emacsclient -nc
+bindsym $mod+$alt+Return exec emacs
+bindsym Mod1+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
 
 bindsym $mod+$alt+t exec --no-startup-id notify-send $(date +'%H:%M')
 bindsym $mod+$alt+d exec --no-startup-id notify-send $(date +'%a %d')

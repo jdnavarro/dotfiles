@@ -1,3 +1,4 @@
-function e --wraps emacsclient --description 'alias e=emacsclient -n'
-    emacsclient -n $argv
+function e --wraps emacs --description 'alias e=emacs'
+    emacs &>/dev/null $argv &
+    disown
 end
