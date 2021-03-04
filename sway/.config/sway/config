@@ -36,8 +36,8 @@ bindsym Mod1+Shift+e exec "swaymsg exit"
 bindsym Mod1+Shift+s exec systemctl suspend
 
 
-bindsym $mod+t exec  notify-send $(date +'%H:%M')
-bindsym $mod+$alt+d exec  notify-send $(date +'%a %d')
+bindsym $mod+t exec notify-send $(date +'%H:%M')
+bindsym $mod+$alt+d exec notify-send $(date +'%a %d')
 bindsym $mod+d exec makoctl dismiss
 bindsym $mod+Shift+d exec makoctl dismiss --all
 
