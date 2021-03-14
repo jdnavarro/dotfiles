@@ -3,6 +3,7 @@ set fish_greeting
 if status --is-interactive
     starship init fish | source
     thefuck --alias | source
+    zoxide init fish | source
 
     abbr -ag -- u systemctl --user
     abbr -ag -- hm history merge

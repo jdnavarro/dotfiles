@@ -1,3 +1,4 @@
-function et --wraps emacs --description 'alias e=emacs -nw'
-    emacs -nw $argv
+function et --wraps emacsclient
+    emacsclient -nw --alternate-editor "emacs -nw" $argv 2> /dev/null
 end
+
