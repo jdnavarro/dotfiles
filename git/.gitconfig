@@ -1,19 +1,36 @@
+[core]
+    pager = delta
+[delta]
+    features = side-by-side line-numbers decorations
+    syntax-theme = Dracula
+
+[delta "decorations"]
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
+    hunk-header-decoration-style = cyan box ul
+
+[delta "line-numbers"]
+    line-numbers-left-style = cyan
+    line-numbers-right-style = cyan
+    line-numbers-minus-style = 124
+    line-numbers-plus-style = 28
 [user]
-	name = Danny Navarro
-	email = j@dannynavarro.net
-	signingkey = 4A96D1B9DBB5E7E9
+    name = Danny Navarro
+    email = j@dannynavarro.net
+    signingkey = 4A96D1B9DBB5E7E9
 [alias]
-	st = status
-	br = branch
-	ci = commit
-	co = checkout
+    st = status
+    br = branch
+    ci = commit
+    co = checkout
 [rebase]
-	autosquash = true
+    autosquash = true
 [github]
-	user = jdnavarro
+    user = jdnavarro
 [commit]
-	gpgsign = true
+    gpgsign = true
 [gpg]
-	program = gpg
+    program = gpg
 [pull]
-	rebase = true
+    rebase = true
