@@ -1,0 +1,208 @@
+(defcfg
+  input (device-file "/dev/input/by-id/usb-foostan_Corne-event-kbd")
+
+  output (uinput-sink "Corne KMonad"
+    "sleep 1 && setxkbmap -option compose:menu && xmodmap ~/.config/xmodmap/crkbd.xmodmap")
+    cmp-seq cmps
+  fallthrough true
+)
+
+(defsrc
+  tab  q    w    e    r    t        y    u    i    o    p    bspc
+  lctl a    s    d    f    g        h    j    k    l    ;    '
+  lsft z    x    c    v    b        n    m    ,    .    /    esc
+               left rght spc        ret  down up
+)
+
+(deflayer beakl
+  XX  @q   @h   @o   @u   @x        @g   @c   @m   @r   @z   XX
+  XX  @y   @i   @e   @a   @.        @d   @s   @t   @n   @b   XX
+  XX  @j   @dq  @,   @k   @'        @w   @f   @l   @p   @v   XX
+            @left @rght @spc        @ret @down @up
+)
+
+(deflayer layer1
+  XX   Q   @H    O   @U    X        G    @C   M    @R   Z    XX
+  XX   Y   @I    E   @A    /        D    @S   T    @N   B    XX
+  XX   J   @!    ?   @K   +'        W    @F   L    @P   V    XX
+      @S-left @S-rght @S-spc        @S-ret @S-down @S-up
+)
+
+(deflayer layer2
+  XX   ^    <    =    >    `        $    [    \_   ]    #    XX
+  XX   \   \(   @-   \)    :        %    {    @;   }    ¿    XX
+  XX   ¡    *    +    @   +'        XX   |    ~    &    +"   XX
+            @pgup @pgdn @tab        @esc @home @end
+)
+
+(deflayer layer3
+  XX  f3   f2   f1  f10   f4        f7   f6   f5   f9   f8   XX
+  XX   3    2   @1    0    4        7    6    @5   9    8    XX
+  XX f13  f12  f11  f20  f14        f17  f16  f15  f19 f18   XX
+           @prnt @menu @bspc        @del @comp @ins
+)
+
+(deflayer layer4
+   _   _    _    _    _    _        _    _    _    _    _    _
+   _   _    _    _    _    _        _    _    _    _    _    _
+   _   _    _    _    _    _        _    _    _    _    _    _
+      @S-pgup @S-pgdn @S-tab        @S-esc @S-home @S-end
+)
+
+(deflayer layer5
+   _   _    _    _    _    _        _    _    _    _    _    _
+   _   _    _    _    _    _        _    _    _    _    _    _
+   _   _    _    _    _    _        _    _    _    _    _    _
+     @S-prnt @S-menu @S-bspc        @S-del @S-comp @S-ins
+)
+
+
+
+(defalias
+  lv1 (layer-toggle layer1)
+  lv2 (layer-toggle layer2)
+  lv3 (layer-toggle layer3)
+  lv4 (layer-toggle layer4)
+  lv5 (layer-toggle layer5)
+
+;; beakl layer
+
+  ;; R0
+
+  left (tap-next left lalt)
+  rght (tap-next right lmeta)
+  spc (tap-next spc lctrl)
+
+  ret (tap-next ret lctrl)
+  down (tap-next down lmeta)
+  up  (tap-next up lalt)
+
+  ;; R2
+
+  e (tap-next e @lv1)
+  t (tap-next t @lv1)
+
+  a (tap-next a @lv2)
+  s (tap-next s @lv2)
+
+  i (tap-next i @lv3)
+  n (tap-next n @lv3)
+
+  y (tap-next y rctrl)
+  b (tap-next b rctrl)
+
+  . (tap-next . rmeta)
+  d (tap-next d rmeta)
+
+  ;; R1
+
+  , (tap-next , C-@lv1)
+  l (tap-next l C-@lv1)
+
+  k (tap-next k C-@lv2)
+  f (tap-next f C-@lv2)
+
+  dq (tap-next S-' C-@lv3)
+  p (tap-next p C-@lv3)
+
+  j (tap-next j C-rctrl)
+  v (tap-next v C-rctrl)
+
+  ' (tap-next ' C-rmeta)
+  w (tap-next w C-rmeta)
+
+  ;; R3
+
+  o (tap-next o A-@lv1)
+  m (tap-next m A-@lv1)
+
+  u (tap-next u A-@lv2)
+  c (tap-next c A-@lv1)
+
+  h (tap-next h A-@lv3)
+  r (tap-next r A-@lv3)
+
+  q (tap-next q A-rctrl)
+  z (tap-next z A-rctrl)
+
+  x (tap-next x A-rmeta)
+  g (tap-next g A-rmeta)
+
+;; Layer 1
+
+  ;; R0
+
+  S-left (tap-next S-left S-lalt)
+  S-rght (tap-next S-rght S-lmeta)
+  S-spc (tap-next S-spc S-lctrl)
+
+  S-ret (tap-next S-ret S-lctrl)
+  S-down (tap-next S-down S-lmeta)
+  S-up (tap-next S-up S-lalt)
+
+  ;; R2
+
+  A (tap-next A @lv4)
+  S (tap-next S @lv4)
+
+  I (tap-next I @lv5)
+  N (tap-next N @lv5)
+
+  ;; R1
+
+  K (tap-next K C-@lv4)
+  F (tap-next F C-@lv4)
+
+  ! (tap-next ! C-@lv5)
+  P (tap-next P C-@lv5)
+
+  ;; R3
+
+  U (tap-next U A-@lv4)
+  C (tap-next C A-@lv4)
+
+  H (tap-next H A-@lv5)
+  R (tap-next R A-@lv5)
+
+  ;; Layer 2
+  pgup (tap-next pgup lalt)
+  pgdn (tap-next pgdn lmeta)
+  tab (tap-next tab lctrl)
+
+  esc (tap-next esc lctrl)
+  home (tap-next KeyHome lmeta)
+  end (tap-next KeyEnd lalt)
+
+  - (tap-next - @lv4)
+  ; (tap-next ; @lv4)
+
+  ;; Layer 3
+  prnt (tap-next prnt lalt)
+  menu (tap-next KeyMenu lmeta)
+  bspc (tap-next bspc lctrl)
+
+  del (tap-next del lctrl)
+  comp (tap-next comp lmeta)
+  ins (tap-next ins lalt)
+
+  1 (tap-next 1 @lv5)
+  5 (tap-next 5 @lv5)
+
+  ;; Layer 4
+  S-pgup (tap-next S-pgup S-lalt)
+  S-pgdn (tap-next S-pgdn S-lmeta)
+  S-tab (tap-next S-tab S-lctrl)
+
+  S-esc (tap-next S-esc S-lctrl)
+  S-home (tap-next S-KeyHome S-lmeta)
+  S-end (tap-next S-KeyEnd S-lalt)
+
+  ;; Layer 5
+  S-prnt (tap-next S-prnt S-lalt)
+  S-menu (tap-next S-KeyMenu S-lmeta)
+  S-bspc (tap-next S-bspc S-lctrl)
+
+  S-del (tap-next S-del S-lctrl)
+  S-comp (tap-next S-comp S-lmeta)
+  S-ins (tap-next S-ins S-lalt)
+)
