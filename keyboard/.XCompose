@@ -1,2 +1,8 @@
 include "%L"
+<Multi_key> <g> <a>           : "α"   U03B1  # GREEK SMALL LETTER ALPHA
+<Multi_key> <g> <b>           : "β"   U03B2  # GREEK SMALL LETTER BETA
 <Multi_key> <g> <l>           : "λ"   U03BB  # GREEK SMALL LETTER LAMBDA
+<Multi_key> <g> <p>           : "π"   U03C0  # GREEK SMALL LETTER PI
+
+<Multi_key> <t> <d>           : "†"   U2020  # DAGGER
+<Multi_key> <v> <minus>           : "✓"   U2020  # DAGGER

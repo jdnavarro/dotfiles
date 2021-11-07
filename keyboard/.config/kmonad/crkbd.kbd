@@ -23,15 +23,15 @@
 
 (deflayer layer1
   XX   Q   @H    O   @U    X        G    @C   M    @R   Z    XX
-  XX   Y   @I    E   @A    /        D    @S   T    @N   B    XX
-  XX   J   @!    ?   @K   +'        W    @F   L    @P   V    XX
+  XX   Y   @I    E   @A    `        D    @S   T    @N   B    XX
+  XX   J   @!    ?   @K    ^        W    @F   L    @P   V    XX
       @S-left @S-rght @S-spc        @S-ret @S-down @S-up
 )
 
 (deflayer layer2
-  XX   ^    <    =    >    `        $    [    \_   ]    #    XX
-  XX   \   \(   @-   \)    :        %    {    @;   }    ¿    XX
-  XX   ¡    *    +    @   +'        XX   |    ~    &    +"   XX
+  XX   ‘    <    =    >    €        £    [    \_   ]    ’    XX
+  XX   \   \(   @-   \)    +        %    {    @;   }    @    XX
+  XX   “    *    :    /    $        #    |    ~    &    ”    XX
             @pgup @pgdn @tab        @esc @home @end
 )
 
@@ -43,20 +43,18 @@
 )
 
 (deflayer layer4
-   _   _    _    _    _    _        _    _    _    _    _    _
-   _   _    _    _    _    _        _    _    _    _    _    _
-   _   _    _    _    _    _        _    _    _    _    _    _
+  XX   _    _    ó    ú    ü        _    ©    ™    ®    _    XX
+  XX   _    í    é    á    _        _    _    @†   ñ    _    XX
+  XX   _    _    _    _    _        _    @α   @λ   @β   @π   XX
       @S-pgup @S-pgdn @S-tab        @S-esc @S-home @S-end
 )
 
 (deflayer layer5
-   _   _    _    _    _    _        _    _    _    _    _    _
-   _   _    _    _    _    _        _    _    _    _    _    _
-   _   _    _    _    _    _        _    _    _    _    _    _
+  XX   _    _    Ó    @Ú   @Ü       _    ¢    _    _    _    XX
+  XX   _    Í    É    Á    •        _    –    —    Ñ    _    XX
+  XX   _    ¡    ¿    °    @✓       _    ×    ÷    √    _    XX
      @S-prnt @S-menu @S-bspc        @S-del @S-comp @S-ins
 )
-
-
 
 (defalias
   lv1 (layer-toggle layer1)
@@ -205,4 +203,17 @@
   S-del (tap-next S-del S-lctrl)
   S-comp (tap-next S-comp S-lmeta)
   S-ins (tap-next S-ins S-lalt)
+
+  ;; Custom compose symbols
+  † #(cmp t d)
+
+  α #(cmp g a)
+  β #(cmp g b)
+  λ #(cmp g l)
+  π #(cmp g p)
+
+  Ú #(cmp ' U)
+  Ü #(cmp \ U)
+
+  ✓ #(cmp v -)
 )
