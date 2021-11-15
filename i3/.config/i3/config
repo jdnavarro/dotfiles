@@ -1,0 +1,177 @@
+set $mod Mod4
+set $alt Mod1
+
+font pango:iosevka 16
+
+floating_modifier $mod
+
+exec --no-startup-id systemctl --user start dunst
+exec --no-startup-id systemctl --user start xsettingsd
+exec --no-startup-id systemctl --user start kmonad.service
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id unclutter
+exec --no-startup-id picom
+exec --no-startup-id hsetroot -solid "#44475A"
+
+bindsym $mod+a exec --no-startup-id volume +5
+bindsym --whole-window $mod+button4 exec --no-startup-id volume +1
+bindsym $mod+k exec --no-startup-id volume -5
+bindsym --whole-window $mod+button5 exec --no-startup-id volume -1
+
+bindsym $mod+e exec --no-startup-id bright +10
+bindsym $mod+comma exec --no-startup-id bright -10
+
+bindsym $mod+ctrl+e exit
+bindsym $mod+ctrl+s exec systemctl suspend
+
+bindsym $mod+space exec --no-startup-id rofi -show drun
+mode "launch" {
+       bindsym f exec firefox; mode "default"
+       bindsym k exec --no-startup-id kitty; mode "default"
+       bindsym Return exec scratch; mode "default"
+       bindsym s exec signal; mode "default"
+       bindsym e exec emacs; mode "default"
+       bindsym d exec firefox-developer-edition; mode "default"
+       bindsym b exec brave; mode "default"
+       bindsym v exec torguard; mode "default"
+
+       bindsym Escape mode "default"
+}
+bindsym $mod+Return mode "launch"
+
+bindsym $mod+m scratchpad show
+bindsym $mod+control+m move scratchpad
+
+bindsym $mod+t exec --no-startup-id dunstify -u low -h "string:x-dunst-stack-tag:time" $(date +"%H:%M")
+bindsym $mod+ctrl+t exec --no-startup-id dunstify -u low -h "string:x-dunst-stack-tag:time" $(date +"%a %F")
+
+bindsym $mod+d exec --no-startup-id dunstctl close
+bindsym $mod+ctrl+d exec --no-startup-id dunstctl close-all
+
+bindsym $mod+grave exec --no-startup-id dunstctl history-pop
+bindsym $mod+shift+grave exec --no-startup-id dunstctl context
+
+bindsym $mod+ctrl+f floating toggle
+
+# kill focused window
+bindsym $mod+w kill
+
+# change focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+ctrl+Left move left
+bindsym $mod+ctrl+Down move down
+bindsym $mod+ctrl+Up move up
+bindsym $mod+ctrl+Right move right
+
+# swap
+bindsym $mod+$alt+Left mark _last; focus left; swap with mark "_last"
+bindsym $mod+$alt+Down mark _last; focus down; swap with mark "_last"
+bindsym $mod+$alt+Up mark _last; focus up; swap with mark "_last"
+bindsym $mod+alt+Right mark _last; focus right; swap with mark "_last"
+
+bindsym $mod+v split h
+bindsym $mod+s split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# focus the parent container
+# bindsym $mod+a focus parent
+# bindsym $mod+k focus child
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws0 "0"
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+
+# switch to workspace
+bindsym $mod+0 workspace number $ws0
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+
+# move focused container to workspace and focus
+bindsym $mod+ctrl+0 move container to workspace number $ws0; workspace number $ws0
+bindsym $mod+ctrl+1 move container to workspace number $ws1; workspace number $ws1
+bindsym $mod+ctrl+2 move container to workspace number $ws2; workspace number $ws2
+bindsym $mod+ctrl+3 move container to workspace number $ws3; workspace number $ws3
+bindsym $mod+ctrl+4 move container to workspace number $ws4; workspace number $ws4
+bindsym $mod+ctrl+5 move container to workspace number $ws5; workspace number $ws5
+bindsym $mod+ctrl+6 move container to workspace number $ws6; workspace number $ws6
+bindsym $mod+ctrl+7 move container to workspace number $ws7; workspace number $ws7
+bindsym $mod+ctrl+8 move container to workspace number $ws8; workspace number $ws8
+bindsym $mod+ctrl+9 move container to workspace number $ws9; workspace number $ws9
+
+bindsym $mod+$alt+0 move container to workspace number $ws0
+bindsym $mod+$alt+1 move container to workspace number $ws1
+bindsym $mod+$alt+2 move container to workspace number $ws2
+bindsym $mod+$alt+3 move container to workspace number $ws3
+bindsym $mod+$alt+4 move container to workspace number $ws4
+bindsym $mod+$alt+5 move container to workspace number $ws5
+bindsym $mod+$alt+6 move container to workspace number $ws6
+bindsym $mod+$alt+7 move container to workspace number $ws7
+bindsym $mod+$alt+8 move container to workspace number $ws8
+bindsym $mod+$alt+9 move container to workspace number $ws9
+
+bindsym $mod+n workspace next
+bindsym $mod+ctrl+n exec --no-startup-id i3-ws -f next
+bindsym $mod+$alt+n exec --no-startup-id i3-ws next
+
+bindsym $mod+p workspace prev
+bindsym $mod+ctrl+p exec --no-startup-id i3-ws -f prev
+bindsym $mod+$alt+p exec --no-startup-id i3-ws prev
+
+bindsym $mod+Tab workspace back_and_forth
+
+bindsym $mod+l exec --no-startup-id i3-ws pack
+
+bindsym $mod+ctrl+c reload
+bindsym $mod+ctrl+r restart
+
+bindsym $mod+g resize set 2126 px 1440 px
+bindsym $mod+ctrl+g resize set 1720 px 1440 px
+
+for_window [class="TorGuard"] floating enable
+
+default_border pixel 2
+gaps inner 15
+
+bar {
+    i3bar_command i3bar --transparency
+    status_command i3status-rs
+    mode hide
+    tray_output primary
+    colors {
+        background #00000000
+    }
+}
+
+# class                 border  bground text    indicator child_border
+client.focused          #6272A4 #6272A4 #F8F8F2 #ff92d0   #6272A4
+# client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+client.focused_inactive #282A36 #282A36 #BFBFBF #282A36   #282A36
+client.unfocused        #44475A #44475A #BFBFBF #44475A   #44475A
+# client.unfocused      #282A36 #282A36 #BFBFBF #282A36   #282A36
+client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+
+client.background       #F8F8F2
