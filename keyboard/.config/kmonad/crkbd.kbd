@@ -1,59 +1,58 @@
 (defcfg
   input (device-file "/dev/input/by-id/usb-foostan_Corne-event-kbd")
 
-  output (uinput-sink "Corne KMonad"
-    "sleep 1 && setxkbmap -option compose:menu && xmodmap ~/.config/xmodmap/crkbd.xmodmap")
-    cmp-seq cmps
+  output (uinput-sink "Corne KMonad")
+  cmp-seq ralt
   fallthrough true
 )
 
 (defsrc
-  tab  q    w    e    r    t        y    u    i    o    p    bspc
-  lctl a    s    d    f    g        h    j    k    l    ;    '
-  lsft z    x    c    v    b        n    m    ,    .    /    esc
-               left rght spc        ret  down up
+  q    h    o    u    x        g    c    m    r    z
+  y    i    e    a    .        d    s    t    n    b
+  j    /    ,    k    '        w    f    l    p    v
+          left rght spc        ent down up
 )
 
 (deflayer beakl
-  XX  @q   @h   @o   @u   @x        @g   @c   @m   @r   @z   XX
-  XX  @y   @i   @e   @a   @.        @d   @s   @t   @n   @b   XX
-  XX  @j   @dq  @,   @k   @'        @w   @f   @l   @p   @v   XX
-            @left @rght @spc        @ret @down @up
+  @q   @h   @o  @u   @x        @g   @c   @m   @r   @z
+  @y   @i   @e  @a   @.        @d   @s   @t   @n   @b
+  @j   @dq  @,  @k   @'        @w   @f   @l   @p   @v
+       @left @rght @spc        @ent @down @up
 )
 
 (deflayer layer1
-  XX   Q   @H    O   @U    X        G    @C   M    @R   Z    XX
-  XX   Y   @I    E   @A    `        D    @S   T    @N   B    XX
-  XX   J   @!    ?   @K    ^        W    @F   L    @P   V    XX
-      @S-left @S-rght @S-spc        @S-ret @S-down @S-up
+  Q   @H    O   @U    X        G    @C   M    @R   Z
+  Y   @I    E   @A    `        D    @S   T    @N   B
+  J   @!    ?   @K    ^        W    @F   L    @P   V
+ @S-left @S-rght @S-spc        @S-ent @S-down @S-up
 )
 
 (deflayer layer2
-  XX   ‘    <    =    >    €        £    [    \_   ]    ’    XX
-  XX   \   \(   @-   \)    +        %    {    @;   }    @    XX
-  XX   “    *    :    /    $        #    |    ~    &    ”    XX
-            @pgup @pgdn @tab        @esc @home @end
+  ‘    <    =    >    €        £    [    \_   ]    ’
+  \   \(   @-   \)    +        %    {    @;   }    @
+  “    *    :    /    $        #    |    ~    &    ”
+       @pgup @pgdn @tab        @esc @end @home
 )
 
 (deflayer layer3
-  XX  f3   f2   f1  f10   f4        f7   f6   f5   f9   f8   XX
-  XX   3    2   @1    0    4        7    6    @5   9    8    XX
-  XX f13  f12  f11  f20  f14        f17  f16  f15  f19 f18   XX
-           @prnt @menu @bspc        @del @comp @ins
+ f3   f2   f1  f10   f4        f7   f6   f5   f9   f8
+  3    2   @1    0    4        7    6    @5   9    8
+f13  f12  f11  f20  f14        f17  f16  f15  f19  f18
+      @prnt @menu @bspc        @del @comp @ins
 )
 
 (deflayer layer4
-  XX   _    _    ó    ú    ü        _    ©    ™    ®    _    XX
-  XX   _    í    é    á    _        _    _    @†   ñ    _    XX
-  XX   _    _    _    _    _        _    @α   @λ   @β   @π   XX
-      @S-pgup @S-pgdn @S-tab        @S-esc @S-home @S-end
+  _    _    ó    ú    ü        _    ©    ™    ®    _
+  _    í    é    á    _        _    ¢    @†   ñ    _
+  _    ¡    ¿    _    _        _    @α   @λ   @β   @π
+ @S-pgup @S-pgdn @S-tab        @S-esc @S-home @S-end
 )
 
 (deflayer layer5
-  XX   _    _    Ó    Ú    Ü        _    ¢    _    _    _    XX
-  XX   _    Í    É    Á    •        _    –    —    Ñ    _    XX
-  XX   _    ¡    ¿    °    @✓       _    ×    ÷    √    _    XX
-     @S-prnt @S-menu @S-bspc        @S-del @S-comp @S-ins
+S-f3  S-f2  S-f1 S-f10 S-f4      S-f7 S-f6 S-f5 S-f9 S-f8
+   Ó     Í     É     Á    Ú      Ü    –    —    Ñ    _
+   _ S-f12 S-f11     °   @✓      _    ×    ÷    √    _
+  @S-prnt @S-menu @S-bspc        @S-del @S-comp @S-ins
 )
 
 (defalias
@@ -67,142 +66,142 @@
 
   ;; R0
 
-  left (tap-hold-next 500 left lalt)
-  rght (tap-hold-next 500 right lmeta)
-  spc (tap-hold-next 500 spc lctrl)
+  left (tap-hold-next-release 180 left lalt)
+  rght (tap-hold-next-release 180 right lmeta)
+  spc (tap-hold-next-release 180 spc lctrl)
 
-  ret (tap-hold-next 500 ret lctrl)
-  down (tap-hold-next 500 down lmeta)
-  up  (tap-hold-next 500 up lalt)
+  ent (tap-hold-next-release 180 ent lctrl)
+  down (tap-hold-next-release 180 down lmeta)
+  up (tap-hold-next-release 180 up lalt)
 
   ;; R2
 
-  e (tap-hold-next 500 e @lv1)
-  t (tap-hold-next 500 t @lv1)
+  e (tap-hold-next-release 500 e @lv1 :timeout-button lsft)
+  t (tap-hold-next-release 500 t @lv1 :timeout-button lsft)
 
-  a (tap-hold-next 500 a @lv2)
-  s (tap-hold-next 500 s @lv2)
+  a (tap-next-release a @lv2)
+  s (tap-next-release s @lv2)
 
-  i (tap-hold-next 500 i @lv3)
-  n (tap-hold-next 500 n @lv3)
+  i (tap-next-release i @lv3)
+  n (tap-next-release n @lv3)
 
-  y (tap-hold-next 500 y rctrl)
-  b (tap-hold-next 500 b rctrl)
+  y (tap-hold-next-release 180 y rctrl)
+  b (tap-hold-next-release 180 b rctrl)
 
-  . (tap-hold-next 500 . rmeta)
-  d (tap-hold-next 500 d rmeta)
+  . (tap-hold-next-release 180 . rmeta)
+  d (tap-hold-next-release 180 d rmeta)
 
   ;; R1
 
-  , (tap-hold-next 500 , C-@lv1)
-  l (tap-hold-next 500 l C-@lv1)
+  , (tap-next-release , C-@lv1)
+  l (tap-next-release l C-@lv1)
 
-  k (tap-hold-next 500 k C-@lv2)
-  f (tap-hold-next 500 f C-@lv2)
+  k (tap-next-release k C-@lv2)
+  f (tap-next-release f C-@lv2)
 
-  dq (tap-hold-next 500 S-' C-@lv3)
-  p (tap-hold-next 500 p C-@lv3)
+  dq (tap-next-release S-' C-@lv3)
+  p (tap-next-release p C-@lv3)
 
-  j (tap-hold-next 500 j C-rctrl)
-  v (tap-hold-next 500 v C-rctrl)
+  j (tap-hold-next-release 180 j C-rctrl)
+  v (tap-hold-next-release 180 v C-rctrl)
 
-  ' (tap-hold-next 500 ' C-rmeta)
-  w (tap-hold-next 500 w C-rmeta)
+  ' (tap-hold-next-release 180 ' C-rmeta)
+  w (tap-hold-next-release 180 w C-rmeta)
 
   ;; R3
 
-  o (tap-hold-next 500 o A-@lv1)
-  m (tap-hold-next 500 m A-@lv1)
+  o (tap-next-release o A-@lv1)
+  m (tap-next-release m A-@lv1)
 
-  u (tap-hold-next 500 u A-@lv2)
-  c (tap-hold-next 500 c A-@lv1)
+  u (tap-next-release u A-@lv2)
+  c (tap-next-release c A-@lv2)
 
-  h (tap-hold-next 500 h A-@lv3)
-  r (tap-hold-next 500 r A-@lv3)
+  h (tap-next-release h A-@lv3)
+  r (tap-next-release r A-@lv3)
 
-  q (tap-hold-next 500 q A-rctrl)
-  z (tap-hold-next 500 z A-rctrl)
+  q (tap-hold-next-release 180 q A-rctrl)
+  z (tap-hold-next-release 180 z A-rctrl)
 
-  x (tap-hold-next 500 x A-rmeta)
-  g (tap-hold-next 500 g A-rmeta)
+  x (tap-hold-next-release 180 x A-rmeta)
+  g (tap-hold-next-release 180 g A-rmeta)
 
 ;; Layer 1
 
   ;; R0
 
-  S-left (tap-hold-next 500 S-left S-lalt)
-  S-rght (tap-hold-next 500 S-rght S-lmeta)
-  S-spc (tap-hold-next 500 S-spc S-lctrl)
+  S-left (tap-hold-next-release 180 S-left S-lalt)
+  S-rght (tap-hold-next-release 180 S-rght S-lmeta)
+  S-spc (tap-hold-next-release 180 S-spc S-lctrl)
 
-  S-ret (tap-hold-next 500 S-ret S-lctrl)
-  S-down (tap-hold-next 500 S-down S-lmeta)
-  S-up (tap-hold-next 500 S-up S-lalt)
+  S-ent (tap-hold-next-release 180 S-ent S-lctrl)
+  S-down (tap-hold-next-release 180 S-down S-lmeta)
+  S-up (tap-hold-next-release 180 S-up S-lalt)
 
   ;; R2
 
-  A (tap-hold-next 500 A @lv4)
-  S (tap-hold-next 500 S @lv4)
+  A (tap-next-release A @lv4)
+  S (tap-next-release S @lv4)
 
-  I (tap-hold-next 500 I @lv5)
-  N (tap-hold-next 500 N @lv5)
+  I (tap-next-release I @lv5)
+  N (tap-next-release N @lv5)
 
   ;; R1
 
-  K (tap-hold-next 500 K C-@lv4)
-  F (tap-hold-next 500 F C-@lv4)
+  K (tap-next-release K C-@lv4)
+  F (tap-next-release F C-@lv4)
 
-  ! (tap-hold-next 500 ! C-@lv5)
-  P (tap-hold-next 500 P C-@lv5)
+  ! (tap-next-release ! C-@lv5)
+  P (tap-next-release P C-@lv5)
 
   ;; R3
 
-  U (tap-hold-next 500 U A-@lv4)
-  C (tap-hold-next 500 C A-@lv4)
+  U (tap-next-release U A-@lv4)
+  C (tap-next-release C A-@lv4)
 
-  H (tap-hold-next 500 H A-@lv5)
-  R (tap-hold-next 500 R A-@lv5)
+  H (tap-next-release H A-@lv5)
+  R (tap-next-release R A-@lv5)
 
   ;; Layer 2
-  pgup (tap-hold-next 500 pgup lalt)
-  pgdn (tap-hold-next 500 pgdn lmeta)
-  tab (tap-hold-next 500 tab lctrl)
+  pgup (tap-hold-next-release 180 pgup lalt)
+  pgdn (tap-hold-next-release 180 pgdn lmeta)
+  tab (tap-hold-next-release 180 tab lctrl)
 
-  esc (tap-hold-next 500 esc lctrl)
-  home (tap-hold-next 500 KeyHome lmeta)
-  end (tap-hold-next 500 KeyEnd lalt)
+  esc (tap-hold-next-release 180 esc lctrl)
+  home (tap-hold-next-release 180 KeyHome lmeta)
+  end (tap-hold-next-release 180 KeyEnd lalt)
 
-  - (tap-hold-next 500 - @lv4)
-  ; (tap-hold-next 500 ; @lv4)
+  - (tap-next-release - @lv4)
+  ; (tap-next-release ; @lv4)
 
   ;; Layer 3
-  prnt (tap-hold-next 500 prnt lalt)
-  menu (tap-hold-next 500 KeyMenu lmeta)
-  bspc (tap-hold-next 500 bspc lctrl)
+  prnt (tap-hold-next-release 180 prnt lalt)
+  menu (tap-hold-next-release 180 comp lmeta)
+  bspc (tap-hold-next-release 180 bspc lctrl)
 
-  del (tap-hold-next 500 del lctrl)
-  comp (tap-hold-next 500 comp lmeta)
-  ins (tap-hold-next 500 ins lalt)
+  del (tap-hold-next-release 180 del lctrl)
+  comp (tap-hold-next-release 180 ralt lmeta)
+  ins (tap-hold-next-release 180 ins lalt)
 
-  1 (tap-hold-next 500 1 @lv5)
-  5 (tap-hold-next 500 5 @lv5)
+  1 (tap-next-release 1 @lv5)
+  5 (tap-next-release 5 @lv5)
 
   ;; Layer 4
-  S-pgup (tap-hold-next 500 S-pgup S-lalt)
-  S-pgdn (tap-hold-next 500 S-pgdn S-lmeta)
-  S-tab (tap-hold-next 500 S-tab S-lctrl)
+  S-pgup (tap-hold-next-release 180 S-pgup S-lalt)
+  S-pgdn (tap-hold-next-release 180 S-pgdn S-lmeta)
+  S-tab (tap-hold-next-release 180 S-tab S-lctrl)
 
-  S-esc (tap-hold-next 500 S-esc S-lctrl)
-  S-home (tap-hold-next 500 S-KeyHome S-lmeta)
-  S-end (tap-hold-next 500 S-KeyEnd S-lalt)
+  S-esc (tap-hold-next-release 180 S-esc S-lctrl)
+  S-home (tap-hold-next-release 180 S-KeyHome S-lmeta)
+  S-end (tap-hold-next-release 180 S-KeyEnd S-lalt)
 
   ;; Layer 5
-  S-prnt (tap-hold-next 500 S-prnt S-lalt)
-  S-menu (tap-hold-next 500 S-KeyMenu S-lmeta)
-  S-bspc (tap-hold-next 500 S-bspc S-lctrl)
+  S-prnt (tap-hold-next-release 180 S-prnt S-lalt)
+  S-menu (tap-hold-next-release 180 S-comp S-lmeta)
+  S-bspc (tap-hold-next-release 180 S-bspc S-lctrl)
 
-  S-del (tap-hold-next 500 S-del S-lctrl)
-  S-comp (tap-hold-next 500 S-comp S-lmeta)
-  S-ins (tap-hold-next 500 S-ins S-lalt)
+  S-del (tap-hold-next-release 180 S-del S-lctrl)
+  S-comp (tap-hold-next-release 180 S-ralt S-lmeta)
+  S-ins (tap-hold-next-release 180 S-ins S-lalt)
 
   ;; Custom compose symbols
   † #(cmp t d)
@@ -214,3 +213,11 @@
 
   ✓ #(cmp v -)
 )
+
+;; TODO?
+;; prime: ′
+;; double prime: ″
+;; elipsis: …
+;; enter (LF, \n): ^J
+;; return (CR, \r): 
+;; Page break(\f):
