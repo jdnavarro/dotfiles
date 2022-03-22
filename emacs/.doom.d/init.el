@@ -3,32 +3,35 @@
 (doom! :input
        :completion
        company
-       (ivy +prescient +childframe)
+       vertico
 
        :ui
        doom
        doom-dashboard
        doom-quit
+       fill-column
        hl-todo
+       indent-guides
        minimap
        modeline
        nav-flash
        ophints
-       (popup +defaults)
-       treemacs
-       tabs
+       (popup +defaults +all)
+       (treemacs +lsp)
+       unicode
        vc-gutter
        vi-tilde-fringe
-       workspaces
-       zen
+       (window-select +numbers)
+       ;; workspaces
 
        :editor
        (evil +everywhere)
+       ;;(meow +qwerty +override +keypad)
        file-templates
        fold
-       (format +onsave)
        lispy
        multiple-cursors
+       ;; objed
        snippets
 
        :emacs
@@ -42,10 +45,11 @@
 
        :checkers
        syntax
-       spell
+       (spell +flyspell)
        grammar
 
        :tools
+       ansible
        debugger
        direnv
        editorconfig
@@ -54,6 +58,7 @@
        (lsp +peek)
        (magit +forge)
        pdf
+       rgb
        taskrunner
        terraform
 
@@ -63,22 +68,22 @@
        :lang
        data
        emacs-lisp
-       (haskell +ghcide)
+       (haskell +lsp)
        json
        (javascript +lsp)
        markdown
-       (org +pretty +roam)
+       nix
+       (org +pretty +roam2)
        racket
        rest
        (rust +lsp)
        (sh +fish)
        scheme
-       ;; svelte supported with lsp
        (web +html +css +lsp)
        yaml
 
        :config
        (default +bindings +smartparens))
 
-(setq doom-localleader-key "<menu>"
-      doom-localleader-alt-key "M-<menu>")
+;; (setq doom-localleader-key "<return>"
+;;       doom-localleader-alt-key "M-<return>")

@@ -1,24 +1,8 @@
-[core]
-    pager = delta
-[delta]
-    features = side-by-side line-numbers decorations
-    syntax-theme = Dracula
-
-[delta "decorations"]
-    commit-decoration-style = bold yellow box ul
-    file-style = bold yellow ul
-    file-decoration-style = none
-    hunk-header-decoration-style = cyan box ul
-
-[delta "line-numbers"]
-    line-numbers-left-style = cyan
-    line-numbers-right-style = cyan
-    line-numbers-minus-style = 124
-    line-numbers-plus-style = 28
 [user]
     name = Danny Navarro
     email = j@dannynavarro.net
     signingkey = 4A96D1B9DBB5E7E9
+#    signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIENPlfMDVjeSwKSwcwEdyHxlNc7mhFmivJ1P0O/fmRGu danny@olaizola
 [alias]
     st = status
     br = branch
@@ -30,7 +14,20 @@
     user = jdnavarro
 [commit]
     gpgsign = true
-[gpg]
-    program = gpg
+[tag]
+    gpgsign = true
+#[gpg]
+    # program = gpg
+    # format = ssh
 [pull]
     rebase = true
+[credential]
+	helper = /usr/lib/git-core/git-credential-libsecret
+[diff]
+	tool = vscode
+#[mergetool "vscode"]
+	#cmd = code --wait $MERGED
+[init]
+	defaultBranch = master
+[gpg "ssh"]
+	allowedSignersFile = /home/danny/.config/git/allowed_signers

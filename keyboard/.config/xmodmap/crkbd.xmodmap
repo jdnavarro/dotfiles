@@ -19,5 +19,4 @@ add mod3 = Hyper_L
 keycode 133 = Super_L
 add mod4 = Super_L
 
-keycode 138 = Multi_key
-keycode 147 = Menu
+keycode 108 = Multi_key

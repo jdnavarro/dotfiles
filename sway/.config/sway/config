@@ -1,22 +1,21 @@
-seat seat0 hide_cursor 4000
+seat seat0 hide_cursor 3000
 
-input * {
+#xwayland disabled
+
+input "type:keyboard" {
     repeat_delay 300
     repeat_rate 60
+}
 
-    xkb_layout "us,es"
-    xkb_options "grp:ctrls_toggle,compose:menu,caps:menu"
-    xkb_model "pc101"
+input '4661:22137:Corne_KMonad' {
+    xkb_options "caps:menu,compose:menu,ctrl:rctrl_meta"
 }
 
 output DP-2 {
     subpixel rgb
     mode 3440x1440@100Hz
+    bg #000000 solid_color
 }
-
-exec mako
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec xiccd
 
 set $mod Mod4
 set $alt Mod1
@@ -25,38 +24,74 @@ font pango:iosevka 16
 
 floating_modifier $mod
 
-bindcode $mod+21 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindcode $mod+20 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym $mod+e exec bright +5
+bindsym $mod+ctrl+e exec bright -5
+
+bindsym $mod+i exec playerctl play-pause
+bindsym $mod+ctrl+i exec playerctl next
+bindsym $mod+$alt+i exec playerctl previous
+
+bindsym $mod+a exec volume +5
+bindsym --whole-window $mod+ctrl+button4 exec volume +1
+bindsym $mod+ctrl+a exec volume -5
+bindsym --whole-window $mod+ctrl+button5 exec volume -1
+
+bindsym --whole-window $mod+button4 resize grow width 1px
+bindsym --whole-window $mod+button5 resize shrink width 1px
+
+bindsym $mod+ctrl+q exit
+bindsym $mod+ctrl+z exec systemctl suspend
 
 bindsym $mod+space exec wofi --show drun
-bindsym $mod+Return exec kitty
-bindsym $mod+Shift+Return exec firefox
-bindsym $mod+$alt+Return exec "env GDK_BACKEND=wayland /home/danny/.local/bin/emacs"
-bindsym Mod1+Shift+e exec "swaymsg exit"
-bindsym Mod1+Shift+s exec systemctl suspend
+mode "launch" {
+       bindsym f exec firefox; mode "default"
+       bindsym Return exec kitty; mode "default"
+       bindsym s exec signal-desktop; mode "default"
+       bindsym e exec emacs; mode "default"
+       bindsym c exec code; mode "default"
+       bindsym d exec firefox-developer-edition; mode "default"
+       bindsym t exec gtk-launch firefox-stealth.desktop;mode "default"
+       bindsym b exec brave; mode "default"
+       bindsym v exec torguard; mode "default"
 
+       bindsym Escape mode "default"
+}
+bindsym $mod+Return mode "launch"
 
-bindsym $mod+t exec notify-send $(date +'%H:%M')
-bindsym $mod+$alt+d exec notify-send $(date +'%a %d')
-bindsym $mod+d exec makoctl dismiss
-bindsym $mod+Shift+d exec makoctl dismiss --all
+bindsym $mod+m scratchpad show
+bindsym $mod+control+m move scratchpad
 
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+t exec dunstify -u low -h "string:x-dunst-stack-tag:time" $(date +"%H:%M")
+bindsym $mod+ctrl+t exec dunstify -u low -h "string:x-dunst-stack-tag:time" $(date +"%a %F")
+
+bindsym $mod+d exec dunstctl close
+bindsym $mod+ctrl+d exec dunstctl close-all
+
+bindsym $mod+grave exec dunstctl history-pop
+bindsym $mod+shift+grave exec dunstctl context
+
+bindsym $mod+ctrl+f floating toggle
 
 # kill focused window
 bindsym $mod+w kill
 
 # change focus
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $mod+ctrl+Left move left
+bindsym $mod+ctrl+Down move down
+bindsym $mod+ctrl+Up move up
+bindsym $mod+ctrl+Right move right
+
+# swap
+bindsym $mod+$alt+Left mark --add _last; focus left; swap container with mark _last; unmark _last
+bindsym $mod+$alt+Down mark --add _last; focus down; swap container with mark _last; unmark _last
+bindsym $mod+$alt+Up mark --add _last; focus up; swap container with mark _last; unmark _last
+bindsym $mod+$alt+Right mark --add _last; focus right; swap container with mark _last; unmark _last
 
 bindsym $mod+v split h
 bindsym $mod+s split v
@@ -64,15 +99,13 @@ bindsym $mod+s split v
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+x layout tabbed
-
 # focus the parent container
-bindsym $mod+a focus parent
-bindsym $mod+z focus child
+# bindsym $mod+a focus parent
+# bindsym $mod+k focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
+set $ws0 "0"
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -82,9 +115,9 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10"
 
 # switch to workspace
+bindsym $mod+0 workspace number $ws0
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
 bindsym $mod+3 workspace number $ws3
@@ -94,68 +127,85 @@ bindsym $mod+6 workspace number $ws6
 bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
 
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number $ws1
-bindsym $mod+Shift+2 move container to workspace number $ws2
-bindsym $mod+Shift+3 move container to workspace number $ws3
-bindsym $mod+Shift+4 move container to workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5
-bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10
+# move focused container to workspace and focus
+bindsym $mod+ctrl+0 move container to workspace number $ws0; workspace number $ws0
+bindsym $mod+ctrl+1 move container to workspace number $ws1; workspace number $ws1
+bindsym $mod+ctrl+2 move container to workspace number $ws2; workspace number $ws2
+bindsym $mod+ctrl+3 move container to workspace number $ws3; workspace number $ws3
+bindsym $mod+ctrl+4 move container to workspace number $ws4; workspace number $ws4
+bindsym $mod+ctrl+5 move container to workspace number $ws5; workspace number $ws5
+bindsym $mod+ctrl+6 move container to workspace number $ws6; workspace number $ws6
+bindsym $mod+ctrl+7 move container to workspace number $ws7; workspace number $ws7
+bindsym $mod+ctrl+8 move container to workspace number $ws8; workspace number $ws8
+bindsym $mod+ctrl+9 move container to workspace number $ws9; workspace number $ws9
 
-bindsym $mod+period workspace next
-bindsym $mod+Shift+period move container to workspace next
-bindsym $mod+comma workspace prev
-bindsym $mod+Shift+comma move container to workspace prev
+bindsym $mod+$alt+0 move container to workspace number $ws0
+bindsym $mod+$alt+1 move container to workspace number $ws1
+bindsym $mod+$alt+2 move container to workspace number $ws2
+bindsym $mod+$alt+3 move container to workspace number $ws3
+bindsym $mod+$alt+4 move container to workspace number $ws4
+bindsym $mod+$alt+5 move container to workspace number $ws5
+bindsym $mod+$alt+6 move container to workspace number $ws6
+bindsym $mod+$alt+7 move container to workspace number $ws7
+bindsym $mod+$alt+8 move container to workspace number $ws8
+bindsym $mod+$alt+9 move container to workspace number $ws9
+
+bindsym $mod+n workspace next
+bindsym $mod+ctrl+n exec move container to workspace next; workspace next
+bindsym $mod+$alt+n exec move container to workspace next
+
+bindsym $mod+p workspace prev
+bindsym $mod+ctrl+p exec move container to workspace prev; workspace prev
+bindsym $mod+$alt+p exec move container to workspace prev
+
 bindsym $mod+Tab workspace back_and_forth
 
-bindsym $mod+m mark M
-bindsym $mod+g [con_mark=M] focus
-bindsym $mod+o swap container with mark M
+bindsym $mod+ctrl+c reload
+bindsym $mod+ctrl+r restart
 
-bindsym $mod+Shift+c reload
-bindsym $mod+Shift+r restart
+# golden
+bindsym $mod+g resize set 2122 px 1438 px
+# half
+bindsym $mod+ctrl+g resize set 1718 px 1438 px
+# third
+bindsym $mod+$alt+g resize set 1144 px 1438 px
 
-# resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
-}
-
-bindsym $mod+r mode "resize"
+for_window [class="TorGuard"] floating enable
 
 default_border pixel 4
-hide_edge_borders smart
 
-# class                 border  bground text    indicator child_border
-client.focused          #6272A4 #6272A4 #F8F8F2 #ff92d0   #6272A4
-client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
-client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
-client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
-client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+bar {
+    mode hide
+    colors {
+        background #00000000
+        statusline #F8F8F2
+        separator  #44475A
 
-client.background       #F8F8F2
+        focused_workspace  #44475A #44475A #F8F8F2
+        active_workspace   #282A36 #44475A #F8F8F2
+        inactive_workspace #282A36 #282A36 #BFBFBF
+        urgent_workspace   #FF5555 #FF5555 #F8F8F2
+        binding_mode       #FF5555 #FF5555 #F8F8F2
+    }
+}
+
+smart_borders on
+
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
+exec swayidle -w \
+	timeout 300 'swaymsg "output * dpms off"' \
+	resume 'swaymsg "output * dpms on"'
+
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+# Makes sure volume is actually restored
+exec pamixer -d 1
+exec pamixer -i 1
+
+exec pw-play /usr/share/sounds/freedesktop/stereo/service-login.oga
+
+exec firefox

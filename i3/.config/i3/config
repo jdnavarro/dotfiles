@@ -7,7 +7,6 @@ floating_modifier $mod
 
 exec --no-startup-id systemctl --user start dunst
 exec --no-startup-id systemctl --user start xsettingsd
-exec --no-startup-id systemctl --user start kmonad.service
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id unclutter
 exec --no-startup-id picom
@@ -15,25 +14,26 @@ exec --no-startup-id hsetroot -solid "#44475A"
 
 bindsym $mod+a exec --no-startup-id volume +5
 bindsym --whole-window $mod+button4 exec --no-startup-id volume +1
-bindsym $mod+k exec --no-startup-id volume -5
+bindsym $mod+ctrl+a exec --no-startup-id volume -5
 bindsym --whole-window $mod+button5 exec --no-startup-id volume -1
 
-bindsym $mod+e exec --no-startup-id bright +10
-bindsym $mod+comma exec --no-startup-id bright -10
+bindsym $mod+e exec --no-startup-id bright +5
+bindsym $mod+ctrl+e exec --no-startup-id bright -5
 
-bindsym $mod+ctrl+e exit
-bindsym $mod+ctrl+s exec systemctl suspend
+bindsym $mod+ctrl+q exit
+bindsym $mod+ctrl+z exec systemctl suspend
 
 bindsym $mod+space exec --no-startup-id rofi -show drun
 mode "launch" {
-       bindsym f exec firefox; mode "default"
-       bindsym k exec --no-startup-id kitty; mode "default"
+       bindsym f exec --no-startup-id firefox; mode "default"
+       bindsym t exec --no-startup-id kitty; mode "default"
        bindsym Return exec scratch; mode "default"
        bindsym s exec signal; mode "default"
-       bindsym e exec emacs; mode "default"
-       bindsym d exec firefox-developer-edition; mode "default"
-       bindsym b exec brave; mode "default"
-       bindsym v exec torguard; mode "default"
+       bindsym e exec --no-startup-id emacs; mode "default"
+       bindsym c exec --no-startup-id code; mode "default"
+       bindsym d exec --no-startup-id firefox-developer-edition; mode "default"
+       bindsym b exec --no-startup-id brave; mode "default"
+       bindsym v exec --no-startup-id torguard; mode "default"
 
        bindsym Escape mode "default"
 }
@@ -72,7 +72,7 @@ bindsym $mod+ctrl+Right move right
 bindsym $mod+$alt+Left mark _last; focus left; swap with mark "_last"
 bindsym $mod+$alt+Down mark _last; focus down; swap with mark "_last"
 bindsym $mod+$alt+Up mark _last; focus up; swap with mark "_last"
-bindsym $mod+alt+Right mark _last; focus right; swap with mark "_last"
+bindsym $mod+$alt+Right mark _last; focus right; swap with mark "_last"
 
 bindsym $mod+v split h
 bindsym $mod+s split v
@@ -147,13 +147,16 @@ bindsym $mod+l exec --no-startup-id i3-ws pack
 bindsym $mod+ctrl+c reload
 bindsym $mod+ctrl+r restart
 
-bindsym $mod+g resize set 2126 px 1440 px
-bindsym $mod+ctrl+g resize set 1720 px 1440 px
+# golden
+bindsym $mod+g resize set 2122 px 1438 px
+# half
+bindsym $mod+ctrl+g resize set 1718 px 1438 px
+# third              
+bindsym $mod+$alt+g resize set 1144 px 1438 px
 
 for_window [class="TorGuard"] floating enable
 
-default_border pixel 2
-gaps inner 15
+default_border pixel 1
 
 bar {
     i3bar_command i3bar --transparency
@@ -167,11 +170,14 @@ bar {
 
 # class                 border  bground text    indicator child_border
 client.focused          #6272A4 #6272A4 #F8F8F2 #ff92d0   #6272A4
-# client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
 client.focused_inactive #282A36 #282A36 #BFBFBF #282A36   #282A36
 client.unfocused        #44475A #44475A #BFBFBF #44475A   #44475A
-# client.unfocused      #282A36 #282A36 #BFBFBF #282A36   #282A36
 client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
 client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
-
 client.background       #F8F8F2
+
+gaps outer -10
+gaps inner 10
+smart_gaps on
+smart_borders on
+hide_edge_borders smart_no_gaps

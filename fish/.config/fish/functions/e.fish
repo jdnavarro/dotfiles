@@ -1,4 +1,3 @@
-function e --wraps emacs --description 'alias e=emacs'
-    emacsclient --alternate-editor emacs $argv 2>/dev/null &
-    disown
+function e --wraps emacs
+    eval $EDITOR $argv
 end
