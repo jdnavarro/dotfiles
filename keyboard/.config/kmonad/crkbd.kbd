@@ -59,7 +59,7 @@ S-f3  S-f2  S-f1 S-f10 S-f4      S-f7 S-f6 S-f5 S-f9 S-f8
   _    _    _    _    _        _    _    _    _    _
   _    @ls3 @ls1 @ls2 _        _    @ls2 @ls1 @ls3 _
   _    _    _    _    _        _    _    _    _    _
-            _    _    _        _    _    _
+          @mx  @mc  @mv        @mv  @mc  @mx
 )
 
 (deflayer layer7
@@ -250,6 +250,12 @@ S-f3  S-f2  S-f1 S-f10 S-f4      S-f7 S-f6 S-f5 S-f9 S-f8
   S-del (tap-hold-next-release 180 S-del S-lctrl)
   S-comp (tap-hold-next-release 180 S-comp S-lmeta)
   S-ins (tap-hold-next-release 180 S-ins S-lalt)
+
+  ;; Macros
+
+  mx #(C-x)
+  mc #(C-c)
+  mv #(C-v)
 
   ;; Custom compose symbols
   † #(cmp t d)
