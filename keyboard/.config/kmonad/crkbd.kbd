@@ -23,21 +23,21 @@
 (deflayer layer1
   Q   @H    O   @U    X        G    @C   M    @R   Z
   Y   @I    E   @A    `        D    @S   T    @N   B
-  J   @!    ?   @K    ^        W    @F   L    @P   V
+  @J  @!    ?   @K    ^        W    @F   L    @P  @V
  @S-left @S-rght @S-spc        @S-ent @S-down @S-up
 )
 
 (deflayer layer2
   ‘    <    =    >    €        £    [    \_   ]    ’
   \   \(   @-   \)    +        %    {    @;   }    @
-  “    *    :    /    $        #    |    ~    &    ”
+  @“    *    :    /    $       #    |    ~    &    @”
        @pgup @pgdn @tab        @esc @end @home
 )
 
 (deflayer layer3
  f3   f2   f1  f10   f4        f7   f6   f5   f9   f8
   3    2   @1    0    4        7    6    @5   9    8
-f13  f12  f11  f20  f14        f17  f16  f15  f19  f18
+@f13  f12  f11  f20  f14       f17  f16  f15  f19  @f18
       @prnt @caps @bspc        @del @comp @ins
 )
 
@@ -55,12 +55,51 @@ S-f3  S-f2  S-f1 S-f10 S-f4      S-f7 S-f6 S-f5 S-f9 S-f8
     @S-prnt @S-caps @S-bspc      @S-del @S-comp @S-ins
 )
 
+(deflayer layer6
+  _    _    _    _    _        _    _    _    _    _
+  _    @ls3 @ls1 @ls2 _        _    @ls2 @ls1 @ls3 _
+  _    _    _    _    _        _    _    _    _    _
+            _    _    _        _    _    _
+)
+
+(deflayer layer7
+  _    _    _    _    _        _    _    _    _    _
+  _    @ls3 @ls0 @ls2 _        _    @ls2 @ls0 @ls3 _
+  _    _    _    _    _        _    _    _    _    _
+            _    _    _        _    _    _
+)
+
+(deflayer layer8
+  _    _    _    _    _        _    _    _    _    _
+  _    @ls3 @ls1 @ls0 _        _    @ls0 @ls1 @ls3 _
+  _    _    _    _    _        _    _    _    _    _
+            _    _    _        _    _    _
+)
+
+(deflayer layer9
+  _    _    _    _    _        _    _    _    _    _
+  _    @ls0 @ls1 @ls2 _        _    @ls2 @ls1 @ls0 _
+  _    _    _    _    _        _    _    _    _    _
+            _    _    _        _    _    _
+)
+
+
 (defalias
   lv1 (layer-toggle layer1)
   lv2 (layer-toggle layer2)
   lv3 (layer-toggle layer3)
   lv4 (layer-toggle layer4)
   lv5 (layer-toggle layer5)
+  lv6 (layer-toggle layer6)
+  lv7 (layer-toggle layer7)
+  lv8 (layer-toggle layer8)
+  lv9 (layer-toggle layer9)
+
+  ls0 (layer-switch beakl)
+  ls1 (layer-switch layer1)
+  ls2 (layer-switch layer2)
+  ls3 (layer-switch layer3)
+
 
 ;; beakl layer
 
@@ -102,8 +141,8 @@ S-f3  S-f2  S-f1 S-f10 S-f4      S-f7 S-f6 S-f5 S-f9 S-f8
   dq (tap-next-release S-' C-@lv3)
   p (tap-next-release p C-@lv3)
 
-  j (tap-hold-next-release 180 j ralt)
-  v (tap-hold-next-release 180 v ralt)
+  j (tap-hold-next-release 180 j @lv6)
+  v (tap-hold-next-release 180 v @lv6)
 
   ' (tap-hold-next-release 180 ' rctrl)
   w (tap-hold-next-release 180 w rctrl)
@@ -119,8 +158,8 @@ S-f3  S-f2  S-f1 S-f10 S-f4      S-f7 S-f6 S-f5 S-f9 S-f8
   h (tap-next-release h A-@lv3)
   r (tap-next-release r A-@lv3)
 
-  q (tap-hold-next-release 180 q rshift)
-  z (tap-hold-next-release 180 z rshift)
+  q (tap-hold-next-release 180 q ralt)
+  z (tap-hold-next-release 180 z ralt)
 
   x (tap-hold-next-release 180 x rmeta)
   g (tap-hold-next-release 180 g rmeta)
@@ -153,6 +192,9 @@ S-f3  S-f2  S-f1 S-f10 S-f4      S-f7 S-f6 S-f5 S-f9 S-f8
   ! (tap-next-release ! C-@lv5)
   P (tap-next-release P C-@lv5)
 
+  J (tap-next-release J @lv7)
+  V (tap-next-release J @lv7)
+
   ;; R3
 
   U (tap-next-release U A-@lv4)
@@ -173,6 +215,9 @@ S-f3  S-f2  S-f1 S-f10 S-f4      S-f7 S-f6 S-f5 S-f9 S-f8
   - (tap-next-release - @lv4)
   ; (tap-next-release ; @lv4)
 
+  “ (tap-next-release “ @lv8)
+  ” (tap-next-release ” @lv8)
+
   ;; Layer 3
   prnt (tap-hold-next-release 180 prnt lalt)
   caps (tap-hold-next-release 180 caps lmeta)
@@ -184,6 +229,9 @@ S-f3  S-f2  S-f1 S-f10 S-f4      S-f7 S-f6 S-f5 S-f9 S-f8
 
   1 (tap-next-release 1 @lv5)
   5 (tap-next-release 5 @lv5)
+
+  f13 (tap-next-release f13 @lv9)
+  f18 (tap-next-release f18 @lv9)
 
   ;; Layer 4
   S-pgup (tap-hold-next-release 180 S-pgup S-lalt)
@@ -219,5 +267,5 @@ S-f3  S-f2  S-f1 S-f10 S-f4      S-f7 S-f6 S-f5 S-f9 S-f8
 ;; double prime: ″
 ;; elipsis: …
 ;; enter (LF, \n): ^J
-;; return (CR, \r): 
+;; return (CR, \r):
 ;; Page break(\f):
