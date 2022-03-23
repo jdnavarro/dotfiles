@@ -1,4 +1,4 @@
-if status --is-login 
+if status --is-login
     bass source /etc/profile
 
     fish_add_path -P \
@@ -10,12 +10,14 @@ if status --is-login
       ~/.node_modules/bin \
       ~/.local/bin
 
-    set -x EDITOR "emacs -nw --no-desktop"
+    set -x EDITOR "et"
     set -x BROWSER "firefox"
 
     set -x SYSTEMD_COLORS "16"
     set -x LESS '-XR --use-color -Dd+r$Du+b'
-    set -x MANPAGER 'less -R --use-color -Dd+r -Du+b'
+    #set -x MANPAGER 'less -R --use-color -Dd+r -Du+b'
+    set -x PAGER 'empager'
+    set -x MANPAGER 'empager'
     set -x FZF_DEFAULT_OPTS "--color=16"
 
     set -x npm_config_prefix "~/.node_modules"
@@ -43,10 +45,10 @@ if status --is-interactive
     abbr -ag -- s systemctl
     abbr -ag -- su systemctl --user
     abbr -ag -- sg systemd-cgls
-    
+
     abbr -ag -- j journalctl
     abbr -ag -- ju journalctl --user-unit
-    
+
     abbr -ag -- hm history merge
 
     abbr -ag -- ef $EDITOR ~/.config/fish/config.fish

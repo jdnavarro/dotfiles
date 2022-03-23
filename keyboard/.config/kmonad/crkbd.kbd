@@ -193,7 +193,7 @@ S-f3  S-f2  S-f1 S-f10 S-f4      S-f7 S-f6 S-f5 S-f9 S-f8
   P (tap-next-release P C-@lv5)
 
   J (tap-next-release J @lv7)
-  V (tap-next-release J @lv7)
+  V (tap-next-release V @lv7)
 
   ;; R3
 

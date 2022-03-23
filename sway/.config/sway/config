@@ -43,20 +43,10 @@ bindsym $mod+ctrl+q exit
 bindsym $mod+ctrl+z exec systemctl suspend
 
 bindsym $mod+space exec wofi --show drun
-mode "launch" {
-       bindsym f exec firefox; mode "default"
-       bindsym Return exec kitty; mode "default"
-       bindsym s exec signal-desktop; mode "default"
-       bindsym e exec emacs; mode "default"
-       bindsym c exec code; mode "default"
-       bindsym d exec firefox-developer-edition; mode "default"
-       bindsym t exec gtk-launch firefox-stealth.desktop;mode "default"
-       bindsym b exec brave; mode "default"
-       bindsym v exec torguard; mode "default"
 
-       bindsym Escape mode "default"
-}
-bindsym $mod+Return mode "launch"
+#bindsym $mod+f exec firefox
+bindsym $mod+return exec kitty
+#bindsym $mod+t exec emacs
 
 bindsym $mod+m scratchpad show
 bindsym $mod+control+m move scratchpad
@@ -174,21 +164,6 @@ bindsym $mod+$alt+g resize set 1144 px 1438 px
 for_window [class="TorGuard"] floating enable
 
 default_border pixel 4
-
-bar {
-    mode hide
-    colors {
-        background #00000000
-        statusline #F8F8F2
-        separator  #44475A
-
-        focused_workspace  #44475A #44475A #F8F8F2
-        active_workspace   #282A36 #44475A #F8F8F2
-        inactive_workspace #282A36 #282A36 #BFBFBF
-        urgent_workspace   #FF5555 #FF5555 #F8F8F2
-        binding_mode       #FF5555 #FF5555 #F8F8F2
-    }
-}
 
 smart_borders on
 
