@@ -23,21 +23,21 @@
 (deflayer layer1
   Q   @H    O   @U    X        G    @C   M    @R   Z
   Y   @I    E   @A    `        D    @S   T    @N   B
-  @J  @!    ?   @K    ^        W    @F   L    @P  @V
+ @J   @!    ?   @K    ^        W    @F   L    @P   @V
  @S-left @S-rght @S-spc        @S-ent @S-down @S-up
 )
 
 (deflayer layer2
-  ‘    <    =    >    €        £    [    \_   ]    ’
+  ‘    <   @=    >    €        £    [    @\_  ]    ’
   \   \(   @-   \)    +        %    {    @;   }    @
-  @“    *    :    /    $       #    |    ~    &    @”
+  @“   *   @#    /    |        ~    $    @:   &    @”
        @pgup @pgdn @tab        @esc @end @home
 )
 
 (deflayer layer3
- f3   f2   f1  f10   f4        f7   f6   f5   f9   f8
+ f3   f2   @f1 f10   f4        f7   f6   @f5  f9   f8
   3    2   @1    0    4        7    6    @5   9    8
-@f13  f12  f11  f20  f14       f17  f16  f15  f19  @f18
+@f13  f12  @f11 f20 f14        f17  f16  @f15 f19  @f18
       @prnt @caps @bspc        @del @comp @ins
 )
 
@@ -215,6 +215,12 @@ S-f3  S-f2  S-f1 S-f10 S-f4      S-f7 S-f6 S-f5 S-f9 S-f8
   - (tap-next-release - @lv4)
   ; (tap-next-release ; @lv4)
 
+  = (tap-next-release = A-@lv4)
+  \_ (tap-next-release \_ A-@lv4)
+
+  # (tap-next-release # C-@lv4)
+  : (tap-next-release : C-@lv4)
+
   “ (tap-next-release “ @lv8)
   ” (tap-next-release ” @lv8)
 
@@ -229,6 +235,12 @@ S-f3  S-f2  S-f1 S-f10 S-f4      S-f7 S-f6 S-f5 S-f9 S-f8
 
   1 (tap-next-release 1 @lv5)
   5 (tap-next-release 5 @lv5)
+
+  f1 (tap-next-release f1 A-@lv5)
+  f5 (tap-next-release f5 A-@lv5)
+
+  f11 (tap-next-release f11 C-@lv5)
+  f15 (tap-next-release f15 C-@lv5)
 
   f13 (tap-next-release f13 @lv9)
   f18 (tap-next-release f18 @lv9)
