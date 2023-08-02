@@ -23,36 +23,50 @@
 (deflayer layer1
   Q   @H    O   @U    X        G    @C   M    @R   Z
   Y   @I    E   @A    `        D    @S   T    @N   B
- @J   @!    ?   @K    ^        W    @F   L    @P   @V
+  J   @!    ?   @K    ^        W    @F   L    @P   V
  @S-left @S-rght @S-spc        @S-ent @S-down @S-up
+)
+
+(deflayer layer1'
+  Q   H    O   U    X        G    C   M    R   Z
+  Y @I'  @E' @A'    .        D    @S' @T'  @N' B
+@J'  !    ?   K     ^        W    F   L    P @V'
+  @left' @rght' @spc'        @ent' @down' @up'
 )
 
 (deflayer layer2
   ‘    <   @=    >    €        £    [    @\_  ]    ’
   \   \(   @-   \)    +        %    {    @;   }    @
-  @“   *   @#    /    |        ~    $    @:   &    @”
+  “    *   @#    /    |        ~    $    @:   &    ”
        @pgup @pgdn @tab        @esc @end @home
 )
 
 (deflayer layer3
  f3   f2   @f1 f10   f4        f7   f6   @f5  f9   f8
   3    2   @1    0    4        7    6    @5   9    8
-@f13  f12  @f11 f20 f14        f17  f16  @f15 f19  @f18
-      @prnt @caps @bspc        @del @comp @ins
+f13  f12   @f11 f20 f14        f17  f16  @f15 f19  f18
+      @prnt @caps @bspc        @del @ins @comp
+)
+
+(deflayer layer3'
+@300 @200 @100 @000 @400         @700 @600 @500 @900 @800
+   3    2    1    0    4         7    6    5    9    8
+ @30  @20  @10  @00  @40         @70  @60  @50  @90  @80
+    @prnt' @caps' @bspc'         @del' @ins' @comp'
 )
 
 (deflayer layer4
   _    _    ó    ú    ü        _    ©    ™    ®    _
   _    í    é    á    _        _    ¢    @†   ñ    _
   _    ¡    ¿    _    _        _    @α   @λ   @β   @π
- @S-pgup @S-pgdn @S-tab        @S-esc @S-home @S-end
+ @S-pgup @S-pgdn @S-tab        @S-esc @S-end @S-home
 )
 
 (deflayer layer5
 S-f3  S-f2  S-f1 S-f10 S-f4      S-f7 S-f6 S-f5 S-f9 S-f8
    Ó     Í     É     Á    Ú      Ü    –    —    Ñ    _
    _ S-f12 S-f11     °   @✓      _    ×    ÷    √    _
-    @S-prnt @S-caps @S-bspc      @S-del @S-comp @S-ins
+    @S-prnt @S-caps @S-bspc      @S-del @S-ins @S-comp
 )
 
 (deflayer layer6
@@ -85,6 +99,7 @@ S-f3  S-f2  S-f1 S-f10 S-f4      S-f7 S-f6 S-f5 S-f9 S-f8
 
 
 (defalias
+  lv0 (layer-toggle beakl)
   lv1 (layer-toggle layer1)
   lv2 (layer-toggle layer2)
   lv3 (layer-toggle layer3)
@@ -96,9 +111,9 @@ S-f3  S-f2  S-f1 S-f10 S-f4      S-f7 S-f6 S-f5 S-f9 S-f8
   lv9 (layer-toggle layer9)
 
   ls0 (layer-switch beakl)
-  ls1 (layer-switch layer1)
+  ls1 (layer-switch layer1')
   ls2 (layer-switch layer2)
-  ls3 (layer-switch layer3)
+  ls3 (layer-switch layer3')
 
 
 ;; beakl layer
@@ -169,20 +184,33 @@ S-f3  S-f2  S-f1 S-f10 S-f4      S-f7 S-f6 S-f5 S-f9 S-f8
   ;; R0
 
   S-left (tap-hold-next-release 180 S-left S-lalt)
+  left' (tap-hold-next-release 180 left A-@lv0)
   S-rght (tap-hold-next-release 180 S-rght S-lmeta)
+  rght' (tap-hold-next-release 180 rght M-@lv0)
   S-spc (tap-hold-next-release 180 S-spc S-lctrl)
+  spc' (tap-hold-next-release 180 spc C-@lv0)
 
   S-ent (tap-hold-next-release 180 S-ent S-lctrl)
+  ent' (tap-hold-next-release 180 ent C-@lv0)
   S-down (tap-hold-next-release 180 S-down S-lmeta)
+  down' (tap-hold-next-release 180 down M-@lv0)
   S-up (tap-hold-next-release 180 S-up S-lalt)
+  up' (tap-hold-next-release 180 up A-@lv0)
 
   ;; R2
 
+  E' (tap-next-release E @lv1)
+  T' (tap-next-release T @lv1)
+
   A (tap-next-release A @lv4)
+  A' (tap-next-release A @lv2)
   S (tap-next-release S @lv4)
+  S' (tap-next-release S @lv2)
 
   I (tap-next-release I @lv5)
+  I' (tap-next-release I @lv3)
   N (tap-next-release N @lv5)
+  N' (tap-next-release N @lv3)
 
   ;; R1
 
@@ -192,8 +220,8 @@ S-f3  S-f2  S-f1 S-f10 S-f4      S-f7 S-f6 S-f5 S-f9 S-f8
   ! (tap-next-release ! C-@lv5)
   P (tap-next-release P C-@lv5)
 
-  J (tap-next-release J @lv7)
-  V (tap-next-release V @lv7)
+  J' (tap-next-release J @lv7)
+  V' (tap-next-release V @lv7)
 
   ;; R3
 
@@ -221,17 +249,20 @@ S-f3  S-f2  S-f1 S-f10 S-f4      S-f7 S-f6 S-f5 S-f9 S-f8
   # (tap-next-release # C-@lv4)
   : (tap-next-release : C-@lv4)
 
-  “ (tap-next-release “ @lv8)
-  ” (tap-next-release ” @lv8)
-
   ;; Layer 3
   prnt (tap-hold-next-release 180 prnt lalt)
+  prnt' (tap-hold-next-release 180 left A-@lv0)
   caps (tap-hold-next-release 180 caps lmeta)
+  caps' (tap-hold-next-release 180 right M-@lv0)
   bspc (tap-hold-next-release 180 bspc lctrl)
+  bspc' (tap-hold-next-release 180 space C-@lv0)
 
   del (tap-hold-next-release 180 del lctrl)
-  comp (tap-hold-next-release 180 comp lmeta)
-  ins (tap-hold-next-release 180 ins lalt)
+  del' (tap-hold-next-release 180 enter C-@lv0)
+  ins (tap-hold-next-release 180 ins lmeta)
+  ins' (tap-hold-next-release 180 down M-@lv0)
+  comp (tap-hold-next-release 180 comp lalt)
+  comp' (tap-hold-next-release 180 up A-@lv0)
 
   1 (tap-next-release 1 @lv5)
   5 (tap-next-release 5 @lv5)
@@ -242,8 +273,35 @@ S-f3  S-f2  S-f1 S-f10 S-f4      S-f7 S-f6 S-f5 S-f9 S-f8
   f11 (tap-next-release f11 C-@lv5)
   f15 (tap-next-release f15 C-@lv5)
 
-  f13 (tap-next-release f13 @lv9)
-  f18 (tap-next-release f18 @lv9)
+  30 (tap-next-release #(3 0) @lv9)
+  80 (tap-next-release #(8 0) @lv9)
+
+  20 #(2 0)
+  90 #(9 0)
+
+  10 #(1 0)
+  50 #(5 0)
+
+  00 #(0 0)
+  60 #(6 0)
+
+  40 #(4 0)
+  70 #(7 0)
+
+  300 #(3 0 0)
+  800 #(8 0 0)
+
+  200 #(2 0 0)
+  900 #(9 0 0)
+
+  100 #(1 0 0)
+  500 #(5 0 0)
+
+  000 #(0 0 0)
+  600 #(6 0 0)
+
+  400 #(4 0 0)
+  700 #(7 0 0)
 
   ;; Layer 4
   S-pgup (tap-hold-next-release 180 S-pgup S-lalt)
@@ -260,8 +318,8 @@ S-f3  S-f2  S-f1 S-f10 S-f4      S-f7 S-f6 S-f5 S-f9 S-f8
   S-bspc (tap-hold-next-release 180 S-bspc S-lctrl)
 
   S-del (tap-hold-next-release 180 S-del S-lctrl)
-  S-comp (tap-hold-next-release 180 S-comp S-lmeta)
-  S-ins (tap-hold-next-release 180 S-ins S-lalt)
+  S-ins (tap-hold-next-release 180 S-ins S-lmeta)
+  S-comp (tap-hold-next-release 180 S-comp S-lalt)
 
   ;; Macros
 
@@ -280,10 +338,10 @@ S-f3  S-f2  S-f1 S-f10 S-f4      S-f7 S-f6 S-f5 S-f9 S-f8
   ✓ #(cmp v -)
 )
 
-;; TODO?
+;; Candidate symbols:
 ;; prime: ′
 ;; double prime: ″
 ;; elipsis: …
 ;; enter (LF, \n): ^J
-;; return (CR, \r):
-;; Page break(\f):
+;; return (CR, \r): ^R
+;; Page break(\f): ^F
