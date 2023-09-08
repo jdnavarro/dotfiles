@@ -1,4 +1,4 @@
 function fish_user_key_bindings
-    bind \eg 'commandline -i " &| rg "'
-    bind \ez 'commandline -i " &| fzf "'
+    bind \en 'clone-in-kitty --type=tab'
+    bind \b backward-kill-bigword
 end

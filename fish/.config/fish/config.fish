@@ -1,60 +1,43 @@
 if status --is-login
     bass source /etc/profile
-
-    fish_add_path -P \
-      ~/.deno/bin \
-      ~/.emacs/doom/bin \
-      ~/.cargo/bin \
-      ~/.ghcup/bin \
-      ~/.cabal/bin \
-      ~/.node_modules/bin \
-      ~/.local/bin
-
-    set -x EDITOR "et"
-    set -x BROWSER "firefox"
-
-    set -x SYSTEMD_COLORS "16"
-    set -x LESS '-XR --use-color -Dd+r$Du+b'
-    #set -x MANPAGER 'less -R --use-color -Dd+r -Du+b'
-    set -x PAGER 'empager'
-    set -x MANPAGER 'empager'
-    set -x FZF_DEFAULT_OPTS "--color=16"
-
-    set -x npm_config_prefix "~/.node_modules"
-
-    set -x FERAL_DIR "$HOME/feral"
-    set -x FERAL_PREVIEW "dev"
-
-    # TODO: Remove PATH when feral isolated flake (needs PATH for pnpm)
-    systemctl --user import-environment FERAL_DIR PATH
-
+    bass "export $(run-parts /usr/lib/systemd/user-environment-generators | xargs -0)"
 end
 
 if status --is-interactive
     set fish_greeting
 
+    set -x LS_COLORS (vivid generate modus-operandi)
+
     starship init fish | source
     zoxide init fish | source
     direnv hook fish | source
+    # Enable AWS CLI autocompletion: github.com/aws/aws-cli/issues/1079
+    complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); aws_completer | sed \'s/ $//\'; end)'
 
-    # pnpm tabtab source for packages
-    [ -f ~/.config/tabtab/fish/__tabtab.fish ]; and . ~/.config/tabtab/fish/__tabtab.fish; or true
+    source ~/.config/tabtab/fish/pnpm.fish
 
-    fzf_configure_bindings --directory=\cf --git_status=\cg --git_log=\co
+    fzf_configure_bindings \
+        --directory=\cf \
+        --git_status=\cg \
+        --git_log=\co \
+        --processes=\cp \
+        --variables=\n # Ctrl-j
 
-    abbr -ag -- s systemctl
-    abbr -ag -- su systemctl --user
-    abbr -ag -- sg systemd-cgls
+    abbr -a -- dae systemctl --user daemon-reload
 
-    abbr -ag -- j journalctl
-    abbr -ag -- ju journalctl --user-unit
+    abbr -a -- hm history merge
 
-    abbr -ag -- hm history merge
+    abbr -a -- fu fd . -Ltl -d1 -x unlink
 
-    abbr -ag -- ef $EDITOR ~/.config/fish/config.fish
-    abbr -ag -- ek $EDITOR ~/.config/kitty/kitty.conf
-    abbr -ag -- e3 $EDITOR ~/.config/i3/config
-    abbr -ag -- es $EDITOR ~/.config/sway/config
+    abbr -a -- ks kitty +kitten ssh
+    abbr -a -- kc kitty +kitten icat
+
+    abbr -a -- jf journalctl -f
+
+    abbr -a -- ef $EDITOR ~/.config/fish/config.fish
+    abbr -a -- ek $EDITOR ~/.config/kitty/kitty.conf
+    abbr -a -- eh $EDITOR ~/.config/hypr/hyprland.conf
+    abbr -a -- es $EDITOR ~/.config/sway/config
 
     cd .
 end

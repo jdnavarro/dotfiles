@@ -1,4 +1,3 @@
-# Defined in - @ line 1
-function ls --wraps exa --description 'alias ls=exa'
-	exa --icons $argv;
+function ls --wraps lsd --description 'alias ls=lsd'
+	lsd --hyperlink=auto $argv;
 end
