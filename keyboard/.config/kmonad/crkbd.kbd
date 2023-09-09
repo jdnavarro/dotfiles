@@ -30,7 +30,7 @@
 (deflayer layer1'
   Q   H    O   U    X        G    C   M    R   Z
   Y @I'  @E' @A'    .        D    @S' @T'  @N' B
-@J'  !    ?   K     ^        W    F   L    P @V'
+@J'  !    ?   K     ^        W    F   L    P   @V'
   @left' @rght' @spc'        @ent' @down' @up'
 )
 
@@ -49,10 +49,10 @@ f13  f12   @f11 f20 f14        f17  f16  @f15 f19  f18
 )
 
 (deflayer layer3'
-@300 @200 @100 @000 @400         @700 @600 @500 @900 @800
-   3    2    1    0    4         7    6    5    9    8
- @30  @20  @10  @00  @40         @70  @60  @50  @90  @80
-    @prnt' @caps' @bspc'         @del' @ins' @comp'
+@300 @200 @100 @000 @400       @700 @600 @500 @900 @800
+   3  @2'  @1'  @0'    4       7    @6'  @5'  @9'  8
+ @30  @20  @10  @00  @40       @70  @60  @50  @90  @80
+    @prnt' @caps' @bspc'       @del' @ins' @comp'
 )
 
 (deflayer layer4
@@ -71,28 +71,28 @@ S-f3  S-f2  S-f1 S-f10 S-f4      S-f7 S-f6 S-f5 S-f9 S-f8
 
 (deflayer layer6
   _    _    _    _    _        _    _    _    _    _
-  _    @ls3 @ls1 @ls2 _        _    @ls2 @ls1 @ls3 _
+  _    @ls3 @ls1 _    _        _    _    @ls1 @ls3 _
   _    _    _    _    _        _    _    _    _    _
           @mx  @mc  @mv        @mv  @mc  @mx
 )
 
 (deflayer layer7
   _    _    _    _    _        _    _    _    _    _
-  _    @ls3 @ls0 @ls2 _        _    @ls2 @ls0 @ls3 _
+  _    @ls3 @ls0 _    _        _    _    @ls0 @ls3 _
   _    _    _    _    _        _    _    _    _    _
             _    _    _        _    _    _
 )
 
 (deflayer layer8
   _    _    _    _    _        _    _    _    _    _
-  _    @ls3 @ls1 @ls0 _        _    @ls0 @ls1 @ls3 _
+  _    @ls3 @ls1 _    _        _    _    @ls1 @ls3 _
   _    _    _    _    _        _    _    _    _    _
             _    _    _        _    _    _
 )
 
 (deflayer layer9
   _    _    _    _    _        _    _    _    _    _
-  _    @ls0 @ls1 @ls2 _        _    @ls2 @ls1 @ls0 _
+  _    @ls0 @ls1 _    _        _    _    @ls1 @ls0 _
   _    _    _    _    _        _    _    _    _    _
             _    _    _        _    _    _
 )
@@ -107,12 +107,12 @@ S-f3  S-f2  S-f1 S-f10 S-f4      S-f7 S-f6 S-f5 S-f9 S-f8
   lv5 (layer-toggle layer5)
   lv6 (layer-toggle layer6)
   lv7 (layer-toggle layer7)
-  lv8 (layer-toggle layer8)
+  ;lv8 (layer-toggle layer8)
   lv9 (layer-toggle layer9)
 
   ls0 (layer-switch beakl)
   ls1 (layer-switch layer1')
-  ls2 (layer-switch layer2)
+  ;ls2 (layer-switch layer2)
   ls3 (layer-switch layer3')
 
 
@@ -264,8 +264,14 @@ S-f3  S-f2  S-f1 S-f10 S-f4      S-f7 S-f6 S-f5 S-f9 S-f8
   comp (tap-hold-next-release 180 comp lalt)
   comp' (tap-hold-next-release 180 up A-@lv0)
 
+  0' (tap-next-release 0 @lv2)
   1 (tap-next-release 1 @lv5)
+  1' (tap-next-release 1 @lv1)
+  2' (tap-next-release 2 @lv3)
   5 (tap-next-release 5 @lv5)
+  5' (tap-next-release 5 @lv1)
+  6' (tap-next-release 6 @lv2)
+  9' (tap-next-release 9 @lv3)
 
   f1 (tap-next-release f1 A-@lv5)
   f5 (tap-next-release f5 A-@lv5)
